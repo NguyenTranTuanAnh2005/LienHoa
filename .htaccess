@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Chặn hiển thị danh sách file thao tác thư mục
+Options -Indexes
+
+# Đảm bảo không ghi đè nếu URL thực sự là một file hoặc thư mục đã tồn tại
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Chuyển hướng mọi request không phải là file có thực về index.php
+# Lấy nội dung URL truyền vào biến `url` qua truy vấn GET
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

@@ -1,0 +1,1 @@
+<?php require 'app/config/Database.php'; $db = new Database(); $conn = $db->getConnection(); $stmt = $conn->query('SELECT ten_goi, mo_ta FROM goi_kham LIMIT 15'); echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));

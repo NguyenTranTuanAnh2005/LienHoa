@@ -1,0 +1,160 @@
+<?php require_once APP_DIR . '/views/layouts/header.php'; ?>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="form-modern-card">
+                <div class="form-modern-header text-center">
+                    <h2 class="form-modern-title text-uppercase" data-lang="hosp_title">ĐĂNG KÝ NHẬP VIỆN</h2>
+                    <p class="form-modern-subtitle" data-lang="hosp_desc">Vui lòng điền đầy đủ thông tin để hoàn tất thủ tục</p>
+                </div>
+
+                <div class="card-body p-4 p-lg-5">
+                    <form action="<?= BASE_URL ?>/hospitalization/store" method="POST">
+                        <div class="row">
+                            <!-- CỘT 1: THÔNG TIN BỆNH NHÂN -->
+                            <div class="col-md-6 mb-4 pe-md-4 border-end-md">
+                                <h4 class="section-title">
+                                    <i class="bi bi-person"></i><span data-lang="hosp_info_patient">Thông tin bệnh nhân</span>
+                                </h4>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold" data-lang="hosp_lbl_name">Họ và tên <span class="text-danger">*</span></label>
+                                    <input type="text" name="patient_name" class="form-control py-2 custom-input" data-lang-placeholder="hosp_plh_name" placeholder="Nhập đầy đủ họ tên" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold" data-lang="hosp_lbl_phone">Số điện thoại <span class="text-danger">*</span></label>
+                                    <input type="tel" name="phone" class="form-control py-2 custom-input" data-lang-placeholder="hosp_plh_phone" placeholder="Số điện thoại liên hệ" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold" data-lang="hosp_lbl_cccd">Số CCCD/CMND</label>
+                                    <input type="text" name="cccd" class="form-control py-2 custom-input" data-lang-placeholder="hosp_plh_cccd" placeholder="Nhập số định danh">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold" data-lang="hosp_lbl_patient_id">Mã bệnh nhân (Nếu có)</label>
+                                    <input type="text" name="patient_id" class="form-control py-2 custom-input" data-lang-placeholder="hosp_plh_patient_id" placeholder="Mã số bệnh nhân">
+                                </div>
+                            </div>
+
+                            <!-- CỘT 2: THÔNG TIN NHẬP VIỆN -->
+                            <div class="col-md-6 mb-4 ps-md-4">
+                                <h4 class="section-title">
+                                    <i class="bi bi-hospital"></i><span data-lang="hosp_info">Thông tin nhập viện</span>
+                                </h4>
+
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold" data-lang="hosp_lbl_branch">Cơ sở bệnh viện <span class="text-danger">*</span></label>
+                                    <select name="hospital_branch" class="form-select py-2 custom-input" required>
+                                        <option value="" data-lang="hosp_select_branch">-- Chọn cơ sở --</option>
+                                        <option value="Cơ sở chính - Quận 14" data-lang="hosp_branch_1">Cơ sở chính (Quận 14, TP.HCM)</option>
+                                        <option value="Cơ sở 2" data-lang="hosp_branch_2">Cơ sở 2</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold" data-lang="hosp_lbl_dept">Khoa điều trị <span class="text-danger">*</span></label>
+                                    <select name="department" class="form-select py-2 custom-input" required>
+                                        <option value="" data-lang="hosp_select_dept">-- Chọn khoa điều trị --</option>
+                                        <option value="Khoa Nội" data-lang="dept_noi">Khoa Nội</option>
+                                        <option value="Khoa Ngoại" data-lang="dept_ngoai">Khoa Ngoại</option>
+                                        <option value="Khoa Hồi sức cấp cứu" data-lang="dept_capcuu">Khoa Hồi sức cấp cứu</option>
+                                        <option value="Khoa Sản" data-lang="dept_san">Khoa Sản</option>
+                                        <option value="Khoa Nhi" data-lang="dept_nhi">Khoa Nhi</option>
+                                        <option value="Khoa Tim mạch" data-lang="dept_tim">Khoa Tim mạch</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold" data-lang="hosp_lbl_date">Ngày dự kiến nhập viện <span class="text-danger">*</span></label>
+                                    <input type="datetime-local" name="admission_date" class="form-control py-2 custom-input" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold" data-lang="hosp_lbl_room">Loại phòng</label>
+                                    <select name="room_type" class="form-select py-2 custom-input">
+                                        <option value="Phòng thường" data-lang="hosp_room_1">Phòng thường - 800.000 VNĐ/ngày</option>
+                                        <option value="Phòng dịch vụ" data-lang="hosp_room_2">Phòng dịch vụ - 1.200.000 VNĐ/ngày</option>
+                                        <option value="Phòng VIP" data-lang="hosp_room_3">Phòng VIP - 2.500.000 VNĐ/ngày</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold" data-lang="hosp_lbl_reason">Lý do nhập viện</label>
+                                    <textarea name="reason" class="form-control custom-input" rows="3" data-lang-placeholder="hosp_plh_reason" placeholder="Mô tả lý do hoặc chỉ định của bác sĩ..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-lg text-white px-5 py-3 fw-bold custom-submit-btn" data-lang="btn_submit_hosp">
+                                ĐĂNG KÝ NHẬP VIỆN
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="bg-light-footer p-4 text-center border-top">
+                    <p class="mb-2 text-muted small" data-lang="hosp_footer_note">* Lưu ý: Vui lòng mang theo đầy đủ giấy tờ tùy thân và hồ sơ bệnh án khi đến nhập viện.</p>
+                    <p class="mb-0 fw-bold" style="color: #0d5c75;">
+                        <i class="bi bi-telephone-fill me-2"></i><span data-lang="hotline_text">Hotline hỗ trợ:</span> (028) 3820 6001
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Form Modern UI */
+    .form-modern-card {
+        border-radius: 24px;
+        border: none;
+        box-shadow: 0 15px 45px rgba(13, 92, 117, 0.08);
+        background: #fff;
+        overflow: hidden;
+    }
+    .form-modern-header {
+        background: linear-gradient(135deg, #0d5c75 0%, #178eb4 100%);
+        padding: 2.5rem 2rem;
+        position: relative;
+    }
+    .form-modern-header::before {
+        content: ''; position: absolute; top: -30px; left: -30px; width: 120px; height: 120px; background: rgba(255,255,255,0.08); border-radius: 50%;
+    }
+    .form-modern-header::after {
+        content: ''; position: absolute; bottom: -40px; right: -20px; width: 150px; height: 150px; background: rgba(255,255,255,0.06); border-radius: 50%;
+    }
+    .form-modern-title {
+        color: #fff; font-weight: 800; letter-spacing: 1px; margin-bottom: 0.5rem; position: relative; z-index: 2;
+    }
+    .form-modern-subtitle {
+        color: rgba(255,255,255,0.85); font-size: 1rem; position: relative; z-index: 2;
+    }
+    .section-title {
+        color: #0d5c75; font-weight: 700; font-size: 1.3rem; margin-bottom: 1.8rem; display: flex; align-items: center;
+    }
+    .section-title i {
+        background: rgba(13, 92, 117, 0.08); color: #0d5c75; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 12px; margin-right: 15px; font-size: 1.3rem;
+    }
+    .custom-input {
+        background-color: #f8fafd; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.8rem 1.2rem; color: #2d3748; font-size: 0.95rem; transition: all 0.3s ease;
+    }
+    .custom-input:focus {
+        background-color: #fff; border-color: #0dcaf0; box-shadow: 0 0 0 4px rgba(13, 202, 240, 0.15);
+    }
+    .custom-submit-btn {
+        background: linear-gradient(135deg, #0d5c75 0%, #1585a9 100%); color: #fff; border: none; border-radius: 50px; padding: 15px 45px; font-weight: 700; letter-spacing: 0.5px; box-shadow: 0 10px 25px rgba(13, 92, 117, 0.25); transition: all 0.3s ease; text-transform: uppercase;
+    }
+    .custom-submit-btn:hover:not(:disabled) {
+        transform: translateY(-3px); box-shadow: 0 15px 30px rgba(13, 92, 117, 0.35); color: #fff;
+    }
+    @media (min-width: 768px) {
+        .border-end-md { border-right: 1px dashed #dee2e6 !important; }
+    }
+    .bg-light-footer { background-color: #f8fafd !important; }
+</style>
+
+<?php require_once APP_DIR . '/views/layouts/footer.php'; ?>

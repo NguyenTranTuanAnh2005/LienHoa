@@ -1,0 +1,34 @@
+.featured-card {
+    background: #fff;
+    border-radius: 18px;
+    /* Những dòng dưới đây bạn nên copy từ .service-card nếu class đó đẹp hơn */
+    border: 1.5px solid #e3f1fe;
+    box-shadow: 0 8px 24px rgba(25, 118, 210, 0.085),
+        0 1.5px 10px rgba(25, 118, 210, 0.12);
+    padding: 28px 20px;
+    width: 270px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(.4, 2.2, .6, 1),
+        box-shadow 0.22s cubic-bezier(.4, 2.2, .6, 1),
+        border 0.18s cubic-bezier(.4, 2.2, .6, 1);
+}
+
+.featured-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 16px 34px rgba(25, 118, 210, 0.17),
+        0 2px 14px rgba(25, 118, 210, 0.17);
+    border: 1.8px solid #1976d2;
+}
+
+.doctor-img {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 18px;
+    border: 3px solid #1976d2;
+}

@@ -1,0 +1,671 @@
+/* ========================================================
+   FILE: style.css
+   Version: 3.0 (Lien Hoa Medical Theme)
+   Mô tả: Bộ CSS phong cách Xanh Cổ vịt (Teal) & Deep Blue (Y tế cao cấp)
+   ======================================================== */
+
+:root {
+    --primary-color: #0d5c75;
+    /* Xanh Deep Teal sang trọng */
+    --bs-primary: #0d5c75;
+    --info-color: #1bbca0;
+    /* Xanh lam nổi bật gradient */
+    --success-color: #2a9d8f;
+    --bg-light: #f2fafa;
+    /* Nền trắng hơi ám xám xanh rất nhẹ tạo cảm giác an tĩnh */
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    background-color: var(--bg-light);
+    color: #1e303b;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* ================== NAVBAR GLASSMORPHISM ================== */
+.navbar-glass {
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(13, 92, 117, 0.05);
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link {
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover {
+    color: var(--info-color) !important;
+}
+
+/* ================== NÚT ĐẶT LỊCH NỔI BẬT TRÊN MENU ================== */
+.btn-booking-nav {
+    background: linear-gradient(135deg, #1bbca0 0%, #0d5c75 100%);
+    border: none;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(27, 188, 160, 0.3) !important;
+    color: white !important;
+}
+
+.btn-booking-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(13, 92, 117, 0.35) !important;
+    background: linear-gradient(135deg, #22d8b8 0%, #106f8c 100%);
+}
+
+/* ================== HERO BANNER TỐI GIẢN ================== */
+.hero-section {
+    background-color: #e3f2fd;
+    background-image: linear-gradient(to right,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(255, 255, 255, 0.85) 20%,
+            rgba(255, 255, 255, 0.5) 40%,
+            rgba(255, 255, 255, 0.2) 60%,
+            rgba(255, 255, 255, 0) 100%), url('../images/hospital-building.jpg');
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    min-height: 65vh;
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+@media (min-width: 992px) {
+    .hero-section {
+        background-image: linear-gradient(to right,
+                rgba(255, 255, 255, 0.95) 0%,
+                rgba(255, 255, 255, 0.85) 20%,
+                rgba(255, 255, 255, 0.5) 40%,
+                rgba(255, 255, 255, 0.2) 60%,
+                rgba(255, 255, 255, 0) 100%), url('../images/hospital-building.jpg');
+    }
+}
+
+/* Typography styles */
+.hero-title {
+    font-size: 3.5rem;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    letter-spacing: -1.5px;
+    color: #0d3d52;
+    font-weight: 800;
+}
+
+@media (min-width: 992px) {
+    .hero-title {
+        font-size: 5.5rem;
+    }
+}
+
+.hero-desc {
+    font-size: 1.25rem;
+    line-height: 2 !important;
+    display: none;
+    /* ẨN DÒNG TEXT MÔ TẢ */
+}
+
+@media (min-width: 992px) {
+    .hero-desc {
+        font-size: 1.35rem;
+        line-height: 2.2 !important;
+        display: none;
+        /* ẨN DÒNG TEXT MÔ TẢ */
+    }
+}
+
+.text-hospital-blue {
+    color: #0d5c75;
+}
+
+.text-hospital-blue-light {
+    color: #1a6f8a;
+    font-size: 1.15rem;
+}
+
+.hero-badge {
+    background: rgba(13, 92, 117, 0.1);
+    color: #0d5c75;
+    border: 1px solid rgba(13, 92, 117, 0.2);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.fw-black {
+    font-weight: 900;
+}
+
+/* Animation mờ dần hiện lên khi load (Fade-in-up) */
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================== FEATURE CARDS (THẺ DỊCH VỤ NỔI BẬT) ================== */
+.feature-card {
+    background: white;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.feature-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 45px rgba(13, 92, 117, 0.15);
+}
+
+.icon-box {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.icon-bg-primary {
+    background: linear-gradient(135deg, rgba(13, 92, 117, 0.12), rgba(13, 92, 117, 0.04));
+    color: var(--primary-color);
+}
+
+.icon-bg-info {
+    background: linear-gradient(135deg, rgba(27, 188, 160, 0.15), rgba(27, 188, 160, 0.05));
+    color: var(--info-color);
+}
+
+.icon-bg-success {
+    background: linear-gradient(135deg, rgba(42, 157, 143, 0.15), rgba(42, 157, 143, 0.05));
+    color: var(--success-color);
+}
+
+.hover-link {
+    transition: padding-bottom 0.2s;
+    padding-bottom: 2px;
+}
+
+.hover-link:hover {
+    padding-bottom: 0px;
+    border-width: 2px !important;
+}
+
+/* ================== SYSTEM UI (DOCTOR & PACKAGE CARDS) ================== */
+.doctor-card {
+    background: white;
+    border-radius: 24px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.doctor-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(13, 92, 117, 0.12);
+    border-color: rgba(27, 188, 160, 0.3);
+}
+
+.doctor-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #eef6f6;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+}
+
+.doctor-card:hover .doctor-avatar {
+    border-color: var(--info-color);
+    transform: scale(1.05);
+}
+
+/* ================== FOOTER ================== */
+.footer-premium {
+    background: linear-gradient(to top, #062330 0%, #0d4659 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+/* Đã chia css Dịch vụ sang file services.css riêng */
+
+/* ================== GÓI KHÁM ƯU ĐÃI (PROMO PACKAGES) ================== */
+.promo-section {
+    padding: 80px 0;
+    margin-bottom: 40px;
+}
+
+.promo-card {
+    background: white;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.promo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(13, 92, 117, 0.12);
+}
+
+.promo-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 25px 25px 0 0;
+}
+
+.promo-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.promo-card:hover .promo-img-wrap img {
+    transform: scale(1.08);
+    /* Phóng to nhẹ khi hover*/
+}
+
+.promo-badge-hospital {
+    background: #e6f5f3;
+    color: var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.promo-card-body {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: white;
+}
+
+.promo-title {
+    color: var(--primary-color);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.promo-desc {
+    color: #556068;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.promo-card-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--info-color);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.promo-card-link i {
+    transition: transform 0.3s ease;
+    margin-left: 6px;
+    font-size: 1.15rem;
+}
+
+.promo-card-link:hover {
+    color: var(--primary-color);
+}
+
+.promo-card-link:hover i {
+    transform: translateX(4px);
+}
+
+/* ================== ĐỘI NGŨ BÁC SĨ (MỚI) ================== */
+.doctor-team-section {
+    padding: 80px 0;
+}
+
+.doctor-card-modern {
+    background: white;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.doctor-card-modern:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(13, 92, 117, 0.12);
+}
+
+.doctor-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    /* ~60% height */
+    overflow: hidden;
+    border-radius: 25px 25px 0 0;
+}
+
+.doctor-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.doctor-card-modern:hover .doctor-img-wrap img {
+    transform: scale(1.08);
+    /* Phóng to nhẹ khi hover */
+}
+
+.doctor-card-body {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: white;
+}
+
+.doctor-badge {
+    background: #e6f5f3;
+    color: var(--primary-color);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.doctor-name {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.doctor-desc {
+    color: #556068;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.doctor-card-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--info-color);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.doctor-card-link i {
+    transition: transform 0.3s ease;
+    margin-left: 6px;
+    font-size: 1.2rem;
+}
+
+.doctor-card-link:hover {
+    color: var(--primary-color);
+}
+
+.doctor-card-link:hover i {
+    transform: translateX(4px);
+}
+
+/* ================== CHUYÊN KHOA MŨI NHỌN ================== */
+.specialty-section {
+    padding: 70px 0;
+    background-color: #f8fbfa;
+}
+
+.specialty-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.specialty-header h2 {
+    color: var(--primary-color);
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.specialty-header p {
+    color: #556068;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+.specialty-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.specialty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(13, 92, 117, 0.12);
+    border-color: var(--info-color);
+    /* Đổi màu viền xanh Teal sáng */
+}
+
+.specialty-img-wrap {
+    height: 220px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+}
+
+.specialty-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.specialty-card:hover .specialty-img-wrap img {
+    transform: scale(1.05);
+}
+
+.specialty-info {
+    padding: 20px 25px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+.specialty-info h3 {
+    margin: 0;
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.cover-image-wrap {
+    width: 100vw;
+    overflow: hidden;
+    margin-bottom: -60px;
+    /* Đưa ảnh sát lên info box, làm nổi boxed info */
+    position: relative;
+    z-index: 1;
+    max-height: 330px;
+}
+
+.cover-image {
+    width: 100%;
+    height: auto;
+    max-height: 330px;
+    object-fit: cover;
+    display: block;
+}
+
+.info-box-home {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    max-width: 700px;
+    margin: -80px auto 32px auto;
+    /* nổi lên trên ảnh, khoảng trắng rộng hai bên */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10), 0 1.5px 6px rgba(13, 110, 253, 0.10);
+    border-radius: 18px;
+    padding: 36px 28px 28px 28px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .cover-image {
+        max-height: 170px;
+    }
+
+    .info-box-home {
+        margin: -50px 10px 18px 10px;
+        padding: 22px 8px;
+    }
+}
+
+.intro-circle-card {
+    position: absolute;
+    top: 140px;
+    /* hoặc chỉnh để sát banner như bạn muốn */
+    right: 3vw;
+    width: 480px;
+    height: 480px;
+    max-width: 90vw;
+    max-height: 90vw;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border: 4px solid #1967d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+    overflow: hidden;
+    /* Nếu phía trên có .container vào relative thì nhớ bỏ/thêm position phù hợp */
+}
+
+.circle-content {
+    /* Đảm bảo text căn giữa thực sự trong hình tròn */
+    width: 82%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+    color: #212529;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.intro-circle-card h2 {
+    font-size: 2rem;
+    margin-bottom: .3em;
+}
+
+.intro-circle-card .desc {
+    font-size: 1.03rem;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+    .intro-circle-card {
+        width: 340px;
+        height: 340px;
+        top: 80px;
+        right: 1vw;
+    }
+
+    .circle-content {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .intro-circle-card {
+        width: 98vw;
+        height: auto;
+        right: 1vw;
+        left: 1vw;
+        top: 10px;
+        border-radius: 30px;
+        position: static;
+        margin: 30px auto 0 auto;
+    }
+
+    .circle-content {
+        width: 95%;
+    }
+}

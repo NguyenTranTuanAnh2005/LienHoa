@@ -1,0 +1,129 @@
+/* ========================================================
+   FILE: services.css
+   Mô tả: CSS chuyên biệt cho khu vực Dịch Vụ Của Chúng Tôi
+   Phong cách: Medical Soft (Pastel, Bo góc 20px, Soft Shadow)
+   ======================================================== */
+
+:root {
+    --service-mint-pastel: #eaf8f5;
+    --service-blue-pastel: #f0f4fd;
+    --service-border-hover: #0d5c75;
+    /* Xanh đậm thương hiệu Liên Hoa */
+    --service-bg-white: #ffffff;
+    --service-text-color: #2c3e50;
+    --service-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    --service-shadow-hover: 0 18px 45px rgba(13, 92, 117, 0.12);
+}
+
+.medical-service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+/* 4 cột trên Desktop như người dùng yêu cầu */
+@media (min-width: 992px) {
+    .medical-service-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.medical-service-card {
+    background-color: var(--service-bg-white);
+    border-radius: 20px;
+    /* Bo góc mềm mại 20px */
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: var(--service-shadow);
+    /* Đổ bóng nhẹ */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 2px solid transparent;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.medical-service-card:hover {
+    transform: translateY(-8px);
+    /* Card nổi lên cao hơn một chút */
+    box-shadow: var(--service-shadow-hover);
+    border-color: var(--service-border-hover);
+    /* Đổi màu viền sang xanh đậm */
+}
+
+/* Hình tròn màu pastel (mặc định nếu không có lớp màu cụ thể) */
+.medical-icon-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    /* Kích thước icon lớn vừa phải ~32px */
+    margin-bottom: 20px;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    /* Mặc định màu xám nhẹ phòng khi thiếu class */
+    background: #f1f3f5;
+    color: #6c757d;
+}
+
+.medical-service-card:hover .medical-icon-circle {
+    transform: scale(1.1);
+    /* Giảm độ sáng nhẹ khi hover để màu nền trở nên đậm/tươi hơn */
+    filter: brightness(0.95);
+}
+
+.medical-service-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--service-text-color);
+    margin: 0;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+}
+
+.medical-service-card:hover .medical-service-title {
+    color: var(--service-border-hover);
+}
+
+/* ========================================================
+   CÁC LỚP MÀU SẮC CHUYÊN BIỆT CHO TỪNG NHÓM CHỨC NĂNG
+   ======================================================== */
+.icon-blue-pastel {
+    background-color: #e8f0fe;
+    color: #1a73e8;
+}
+
+.icon-orange-pastel {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.icon-teal-pastel {
+    background-color: #e0f2f1;
+    color: #00897b;
+}
+
+.icon-pink-pastel {
+    background-color: #fce4ec;
+    color: #d81b60;
+}
+
+.icon-green-pastel {
+    background-color: #e8f5e9;
+    color: #43a047;
+}
+
+.icon-red-pastel {
+    background-color: #ffebee;
+    color: #e53935;
+}
+
+.icon-teal-dark-pastel {
+    background-color: #e0f7fa;
+    color: #00acc1;
+}
+
