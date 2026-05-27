@@ -83,6 +83,7 @@
             <div class="row g-4 justify-content-center">
                 <div class="col-md-10">
                     <div class="dotted-line"><span class="data-label">Họ và tên bệnh nhân:</span> <span class="data-value"><?= mb_strtoupper($labTest['patient_name'] ?? '') ?></span></div>
+                    <div class="dotted-line"><span class="data-label">Giới tính:</span> <span class="data-value"><?= htmlspecialchars($labTest['gender'] ?? '---') ?></span></div>
                     <div class="dotted-line"><span class="data-label">Loại xét nghiệm:</span> <span class="data-value text-primary fs-5"><?= htmlspecialchars($labTest['test_type'] ?? '') ?></span></div>
                     <div class="dotted-line"><span class="data-label">Chi phí xét nghiệm:</span> <span class="data-value text-danger fw-bold fs-5"><?= number_format($labTest['tong_tien'] ?? 300000, 0, ',', '.') ?>đ</span></div>
                     <div class="dotted-line"><span class="data-label">Ghi chú:</span> <span class="data-value"><?= htmlspecialchars($labTest['notes'] ?? '---') ?></span></div>

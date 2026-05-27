@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="card-body p-4 p-lg-5">
-                    <form action="<?= BASE_URL ?>/hospitalization/store" method="POST">
+                    <form action="<?= BASE_URL ?>/hospitalization/store" method="POST" id="hospitalizationForm">
                         <div class="row">
                             <!-- CỘT 1: THÔNG TIN BỆNH NHÂN -->
                             <div class="col-md-6 mb-4 pe-md-4 border-end-md">
@@ -21,6 +21,15 @@
                                 <div class="mb-3">
                                     <label class="form-label small fw-bold" data-lang="hosp_lbl_name">Họ và tên <span class="text-danger">*</span></label>
                                     <input type="text" name="patient_name" class="form-control py-2 custom-input" data-lang-placeholder="hosp_plh_name" placeholder="Nhập đầy đủ họ tên" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label small fw-bold"><span data-lang="book_lbl_gender">Giới tính</span> <span class="text-danger">*</span></label>
+                                    <select name="gender" class="form-select py-2 custom-input" required>
+                                        <option value="Nam" data-lang="book_gender_male">Nam</option>
+                                        <option value="Nữ" data-lang="book_gender_female">Nữ</option>
+                                        <option value="Khác" data-lang="book_gender_other">Khác</option>
+                                    </select>
                                 </div>
 
                                 <div class="mb-3">
@@ -156,5 +165,37 @@
     }
     .bg-light-footer { background-color: #f8fafd !important; }
 </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('hospitalizationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Xác nhận đăng ký nhập viện?',
+            html: 'Bạn có chắc chắn muốn đăng ký nhập viện?<br><small class="text-muted">Vui lòng kiểm tra kỹ thông tin trước khi xác nhận.</small>',
+            icon: 'question',
+            showCancelButton: true,
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: 'btn custom-submit-btn px-4 py-2 me-3 shadow',
+                cancelButton: 'btn btn-light border px-4 py-2 fw-bold shadow-sm',
+                popup: 'rounded-4 border-0 shadow-lg'
+            },
+            confirmButtonText: '<i class="bi bi-check2-circle me-2"></i>Xác nhận',
+            cancelButtonText: '<i class="bi bi-x-circle me-2"></i>Hủy',
+            showClass: {
+                popup: 'animate__animated animate__fadeInUp animate__faster'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutDown animate__faster'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        });
+    });
+</script>
 
 <?php require_once APP_DIR . '/views/layouts/footer.php'; ?>

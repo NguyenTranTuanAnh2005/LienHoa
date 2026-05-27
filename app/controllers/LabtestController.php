@@ -64,6 +64,7 @@ class LabtestController extends BaseController
                 'phone'        => filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_SPECIAL_CHARS),
                 'cccd'         => filter_input(INPUT_POST, 'cccd', FILTER_SANITIZE_SPECIAL_CHARS),
                 'patient_id'   => filter_input(INPUT_POST, 'patient_id', FILTER_SANITIZE_SPECIAL_CHARS),
+                'gender'       => filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_SPECIAL_CHARS),
                 'test_type'    => $test_type,
                 'sample_date'  => filter_input(INPUT_POST, 'sample_date', FILTER_SANITIZE_SPECIAL_CHARS),
                 'notes'        => filter_input(INPUT_POST, 'notes', FILTER_SANITIZE_SPECIAL_CHARS),

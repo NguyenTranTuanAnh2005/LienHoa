@@ -90,6 +90,7 @@
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="dotted-line"><span class="data-label">Họ và tên:</span> <span class="data-value"><?= mb_strtoupper($hospitalization['patient_name'] ?? '') ?></span></div>
+                    <div class="dotted-line"><span class="data-label">Giới tính:</span> <span class="data-value"><?= htmlspecialchars($hospitalization['gender'] ?? '---') ?></span></div>
                     <div class="dotted-line"><span class="data-label">Mã bệnh nhân:</span> <span class="data-value"><?= $hospitalization['patient_id'] ?? '---' ?></span></div>
                     <div class="dotted-line"><span class="data-label">Số điện thoại:</span> <span class="data-value"><?= $hospitalization['phone'] ?? '' ?></span></div>
                 </div>

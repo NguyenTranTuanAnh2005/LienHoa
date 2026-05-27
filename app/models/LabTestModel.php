@@ -19,9 +19,9 @@ class LabTestModel
     public function create(array $data)
     {
         $query = "INSERT INTO lab_tests (
-                    user_id, patient_name, phone, cccd, patient_id, test_type, sample_date, notes, tong_tien, status
+                    user_id, patient_name, phone, cccd, patient_id, gender, test_type, sample_date, notes, tong_tien, status
                   ) VALUES (
-                    :user_id, :patient_name, :phone, :cccd, :patient_id, :test_type, :sample_date, :notes, :tong_tien, 'pending'
+                    :user_id, :patient_name, :phone, :cccd, :patient_id, :gender, :test_type, :sample_date, :notes, :tong_tien, 'pending'
                   )";
                   
         $stmt = $this->conn->prepare($query);
@@ -32,6 +32,7 @@ class LabTestModel
             ':phone'        => $data['phone'] ?? null,
             ':cccd'         => $data['cccd'] ?? null,
             ':patient_id'   => $data['patient_id'] ?? null,
+            ':gender'       => $data['gender'] ?? null,
             ':test_type'    => $data['test_type'] ?? null,
             ':sample_date'  => $data['sample_date'] ?? null,
             ':notes'        => $data['notes'] ?? null,
@@ -53,11 +54,24 @@ class LabTestModel
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data ?: null;
     }
-    public function getAll(): array
+    public function getAll($search = ''): array
     {
-        $query = "SELECT * FROM lab_tests ORDER BY id DESC";
+        $query = "SELECT l.*, p.patient_code as linked_patient_code FROM lab_tests l LEFT JOIN patients p ON l.phone = p.phone WHERE 1=1";
+        
+        $params = [];
+        if (!empty($search)) {
+            $query .= " AND (l.patient_name LIKE :search1 OR l.phone LIKE :search2 OR l.user_id LIKE :search3 OR p.patient_code LIKE :search4)";
+            $searchTerm = '%' . $search . '%';
+            $params[':search1'] = $searchTerm;
+            $params[':search2'] = $searchTerm;
+            $params[':search3'] = $searchTerm;
+            $params[':search4'] = $searchTerm;
+        }
+
+        $query .= " ORDER BY l.id DESC";
+
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

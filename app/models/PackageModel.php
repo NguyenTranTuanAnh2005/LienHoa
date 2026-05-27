@@ -23,7 +23,7 @@ class PackageModel
             return [];
         }
 
-        $query = "SELECT id, ten_goi, mo_ta, gia_tien 
+        $query = "SELECT id, ten_goi, mo_ta, gia_tien, hinh_anh, chi_tiet 
                   FROM goi_kham 
                   WHERE id IN (
                       SELECT MIN(id) 
@@ -54,7 +54,7 @@ class PackageModel
         }
 
         // Truy vấn lấy chi tiết gói khám theo ID
-        $query = "SELECT id, ten_goi, mo_ta, gia_tien 
+        $query = "SELECT id, ten_goi, mo_ta, gia_tien, hinh_anh, chi_tiet 
                   FROM goi_kham 
                   WHERE id = :id 
                   LIMIT 1";

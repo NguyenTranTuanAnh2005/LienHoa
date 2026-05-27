@@ -76,7 +76,7 @@
         <!-- Công cụ (Search + Nút Thêm) -->
         <div class="col-md-8 d-flex gap-3 justify-content-md-end flex-wrap flex-md-nowrap">
             <div class="input-group shadow-sm" style="max-width: 350px;">
-                <input type="text" id="searchInput" class="form-control rounded-pill-start border-end-0 py-2" placeholder="Tìm tên hoặc SĐT...">
+                <input type="text" id="searchInput" class="form-control rounded-pill-start border-end-0 py-2" placeholder="Tìm mã BN, tên hoặc SĐT...">
                 <button class="btn btn-outline-secondary rounded-pill-end border-start-0 py-2 px-3 bg-white" id="btnSearch" type="button">
                     <i class="bi bi-search text-patient-primary"></i>
                 </button>
@@ -89,9 +89,9 @@
     </div>
 
     <!-- Danh sách Bệnh nhân -->
-    <div class="card shadow-sm border-0 card-custom overflow-hidden">
+    <div class="card shadow-sm border-0 card-custom">
         <div class="card-body p-0">
-            <div class="table-responsive">
+            <div class="table-responsive" style="overflow: visible;">
                 <table class="table table-hover table-patient align-middle mb-0">
                     <thead>
                         <tr>

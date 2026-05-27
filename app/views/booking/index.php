@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="card-body p-4 p-lg-5">
-                    <form action="<?= BASE_URL ?>/booking/store" method="POST">
+                    <form action="<?= BASE_URL ?>/booking/store" method="POST" id="bookingForm">
                         <div class="row">
                             <div class="col-md-6 mb-4 pe-md-4 border-end-md">
                                 <h4 class="section-title">
@@ -94,15 +94,15 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label small fw-bold">Bác sĩ chuyên khoa <span class="text-danger">*</span></label>
+                                    <label class="form-label small fw-bold"><span data-lang="book_lbl_doctor">Bác sĩ chuyên khoa</span> <span class="text-danger">*</span></label>
                                     <select name="doctor_id" class="form-select py-2 custom-input" required>
-                                        <option value="">-- Chọn bác sĩ --</option>
-                                        <option value="Nguyễn Văn An" data-specialty="noi-khoa">BS. Nguyễn Văn An</option>
-                                        <option value="Trần Thị Bình" data-specialty="nhi-khoa">BS. Trần Thanh Bình</option>
-                                        <option value="Lê Minh Tâm" data-specialty="ngoai-khoa">BS. Lê Minh Tâm</option>
-                                        <option value="Phạm Quang Khải" data-specialty="sản-khoa">BS. Phạm Quang Khải</option>
-                                        <option value="Lê Quang Hải" data-specialty="nha-khoa">BS. Lê Quang Hải</option>
-                                        <option value="Nguyễn Thị Trang" data-specialty="ung-buou">BS. Nguyễn Thị Trang</option>
+                                        <option value="" data-lang="book_select_doctor">-- Chọn bác sĩ --</option>
+                                        <option value="Nguyễn Văn An" data-specialty="noi-khoa" data-translate-text="true">BS. Nguyễn Văn An</option>
+                                        <option value="Trần Thị Bình" data-specialty="nhi-khoa" data-translate-text="true">BS. Trần Thanh Bình</option>
+                                        <option value="Lê Minh Tâm" data-specialty="ngoai-khoa" data-translate-text="true">BS. Lê Minh Tâm</option>
+                                        <option value="Phạm Quang Khải" data-specialty="sản-khoa" data-translate-text="true">BS. Phạm Quang Khải</option>
+                                        <option value="Lê Quang Hải" data-specialty="nha-khoa" data-translate-text="true">BS. Lê Quang Hải</option>
+                                        <option value="Nguyễn Thị Trang" data-specialty="ung-buou" data-translate-text="true">BS. Nguyễn Thị Trang</option>
                                     </select>
                                 </div>
                             </div> </div> <div class="text-center mt-4">
@@ -171,5 +171,37 @@
     }
     .bg-light-footer { background-color: #f8fafd !important; }
 </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Xác nhận đặt lịch hẹn?',
+            html: 'Bạn có chắc chắn muốn đặt lịch hẹn này?<br><small class="text-muted">Vui lòng kiểm tra kỹ thông tin trước khi xác nhận.</small>',
+            icon: 'question',
+            showCancelButton: true,
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: 'btn custom-submit-btn px-4 py-2 me-3 shadow',
+                cancelButton: 'btn btn-light border px-4 py-2 fw-bold shadow-sm',
+                popup: 'rounded-4 border-0 shadow-lg'
+            },
+            confirmButtonText: '<i class="bi bi-check2-circle me-2"></i>Xác nhận',
+            cancelButtonText: '<i class="bi bi-x-circle me-2"></i>Hủy',
+            showClass: {
+                popup: 'animate__animated animate__fadeInUp animate__faster'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutDown animate__faster'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        });
+    });
+</script>
 
 <?php require_once APP_DIR . '/views/layouts/footer.php'; ?>

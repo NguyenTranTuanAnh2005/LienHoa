@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="card-body p-4 p-lg-5">
-                    <form action="<?= BASE_URL ?>/booking/store" method="POST">
+                    <form action="<?= BASE_URL ?>/booking/store" method="POST" id="packageForm">
                         
                         <?php if (!empty($selected_package)): ?>
                             <input type="hidden" name="package_id" value="<?= $selected_package['id'] ?>">
@@ -173,5 +173,38 @@
     }
     .bg-light-footer { background-color: #f8fafd !important; }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script>
+    document.getElementById('packageForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Xác nhận đăng ký gói khám?',
+            html: 'Bạn có chắc chắn muốn đăng ký gói khám này?<br><small class="text-muted">Vui lòng kiểm tra kỹ thông tin trước khi xác nhận.</small>',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: '<i class="bi bi-check-circle me-1"></i> XÁC NHẬN',
+            cancelButtonText: '<i class="bi bi-x-circle me-1"></i> Hủy',
+            customClass: {
+                confirmButton: 'btn custom-submit-btn px-4 py-2 me-3',
+                cancelButton: 'btn btn-light border px-4 py-2 fw-bold text-dark',
+                popup: 'rounded-4 shadow-lg border-0',
+                title: 'fw-bold text-dark'
+            },
+            buttonsStyling: false,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown animate__faster'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutDown animate__faster'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        });
+    });
+</script>
 
 <?php require_once APP_DIR . '/views/layouts/footer.php'; ?>

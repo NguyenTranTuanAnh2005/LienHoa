@@ -127,11 +127,84 @@
 <!-- NHÚNG CSS MỚI CHO GIAO DIỆN DỊCH VỤ -->
 <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/services.css">
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&display=swap');
+    
+    .hospital-section-title {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
+        font-size: 2.4rem;
+        background: linear-gradient(135deg, #0d6efd 10%, #0dcaf0 90%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.2rem;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+    }
+    
+    .hospital-section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #0d6efd, #0dcaf0);
+        border-radius: 4px;
+    }
+    
+    .hospital-section-subtitle {
+        font-family: 'Nunito', sans-serif;
+        color: #5c6c7b;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        font-weight: 500;
+    }
+
+    .scroll-fade-in {
+        opacity: 0;
+        transform: translateY(25px) scale(0.98);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        will-change: opacity, transform;
+    }
+    
+    .scroll-fade-in.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.scroll-fade-in').forEach(el => {
+        observer.observe(el);
+    });
+});
+</script>
+
 <!-- DỊCH VỤ CỦA CHÚNG TÔI -->
 <section id="dich-vu" class="container py-5 mt-4">
-    <div class="text-center mb-5">
-        <h2 class="fw-bolder text-dark" data-lang="srv_title">Dịch Vụ Của Chúng Tôi</h2>
-        <p class="text-muted" data-lang="srv_desc">Mang đến trải nghiệm chăm sóc sức khỏe toàn diện và tiện ích nhất.</p>
+    <div class="text-center mb-5 scroll-fade-in">
+        <h2 class="hospital-section-title" data-lang="srv_title">Dịch Vụ Của Chúng Tôi</h2>
+        <p class="hospital-section-subtitle" data-lang="srv_desc">Mang đến trải nghiệm chăm sóc sức khỏe toàn diện và tiện ích nhất.</p>
     </div>
 
     <div id="quick-access-bar" class="d-none d-md-flex flex-column shadow-lg">
@@ -372,11 +445,11 @@
 
 <!-- SƠ ĐỒ KIẾN TRÚC BỆNH VIỆN -->
 <section id="so-do" class="container py-5 mt-4">
-    <div class="text-center mb-5">
-    <h2 class="fw-bolder" style="color: var(--primary-color);" data-lang="map_main_title">
+    <div class="text-center mb-5 scroll-fade-in">
+    <h2 class="hospital-section-title" data-lang="map_main_title">
         Sơ đồ tổng quan bệnh viện
     </h2>
-    <p class="text-muted fs-5 mx-auto" style="max-width: 800px;" data-lang="map_main_desc">
+    <p class="hospital-section-subtitle" data-lang="map_main_desc">
         Khám phá quy mô và sơ đồ bố trí hiện đại của Bệnh Viện Đa khoa Liên Hoa, mang đến sự tiện lợi tối đa cho bệnh nhân khi thăm khám.
     </p>
 </div>
@@ -540,9 +613,9 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- ĐỘI NGŨ BÁC SĨ -->
 <section id="bac-si" class="doctor-team-section">
     <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bolder" style="color: var(--primary-color);" data-lang="doc_title">Đội ngũ bác sĩ chuyên gia</h2>
-            <p class="text-muted fs-5" data-lang="doc_subtitle">Gặp gỡ các bác sĩ chuyên khoa phụ trách giàu kinh nghiệm của Bệnh Viện Liên Hoa, luôn tận tụy vì sức khỏe cộng đồng.</p>
+        <div class="text-center mb-5 scroll-fade-in">
+            <h2 class="hospital-section-title" data-lang="doc_title">Đội ngũ bác sĩ chuyên gia</h2>
+            <p class="hospital-section-subtitle" data-lang="doc_subtitle">Gặp gỡ các bác sĩ chuyên khoa phụ trách giàu kinh nghiệm của Bệnh Viện Liên Hoa, luôn tận tụy vì sức khỏe cộng đồng.</p>
         </div>
         
         <div class="position-relative">
@@ -638,9 +711,9 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- CHUYÊN KHOA MŨI NHỌN (HOAN MY STYLE) -->
 <section id="chuyen-khoa" class="specialty-section py-5 bg-light">
     <div class="container">
-        <div class="specialty-header text-center mb-5">
-            <h2 class="fw-bolder" data-lang="spec_title">Chuyên khoa mũi nhọn</h2>
-            <p data-lang="spec_subtitle" class="text-muted mx-auto" style="max-width: 800px;">Bệnh Viện Liên Hoa cung cấp một loạt chuyên khoa và dịch vụ y tế đa dạng, kết hợp kinh nghiệm y tế với công nghệ tiên tiến để cung cấp sự chăm sóc cao nhất cho bệnh nhân.</p>
+        <div class="specialty-header text-center mb-5 scroll-fade-in">
+            <h2 class="hospital-section-title" data-lang="spec_title">Chuyên khoa mũi nhọn</h2>
+            <p data-lang="spec_subtitle" class="hospital-section-subtitle">Bệnh Viện Liên Hoa cung cấp một loạt chuyên khoa và dịch vụ y tế đa dạng, kết hợp kinh nghiệm y tế với công nghệ tiên tiến để cung cấp sự chăm sóc cao nhất cho bệnh nhân.</p>
         </div>
 
         <!-- Custom Tabs Navigation -->
@@ -836,9 +909,9 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- GÓI KHÁM NỔI BẬT -->
 <section id="goi-kham" class="promo-section position-relative">
     <div class="container position-relative">
-        <div class="text-center mb-5">
-            <h2 class="fw-bolder" style="color: var(--primary-color);" data-lang="pkg_title">Gói chăm sóc sức khỏe</h2>
-            <p class="text-muted fs-5" data-lang="pkg_subtitle">Lựa chọn chăm sóc sức khỏe thông minh hơn với các gói dịch vụ giá trị tuyệt vời của Bệnh Viện Liên Hoa.</p>
+        <div class="text-center mb-5 scroll-fade-in">
+            <h2 class="hospital-section-title" data-lang="pkg_title">Gói chăm sóc sức khỏe</h2>
+            <p class="hospital-section-subtitle" data-lang="pkg_subtitle">Lựa chọn chăm sóc sức khỏe thông minh hơn với các gói dịch vụ giá trị tuyệt vời của Bệnh Viện Liên Hoa.</p>
         </div>
         
         <div class="position-relative">
@@ -860,7 +933,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <h3 class="promo-title mb-2" data-translate-text="true"><?= htmlspecialchars($pkg['ten_goi']) ?></h3>
                                         <div class="fw-bold fs-5 text-primary mb-2"><?= number_format($pkg['gia_tien'], 0, ',', '.') ?> VNĐ</div>
                                         <div class="promo-desc mb-4" data-translate-text="true" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;"><?= htmlspecialchars($pkg['mo_ta']) ?></div>
-                                        <a href="<?= BASE_URL ?>/booking/package?package_id=<?= $pkg['id'] ?>" class="promo-card-link mt-auto"><span data-lang="btn_more">Xem thêm</span> <i class="bi bi-arrow-right"></i></a>
+                                        <a href="<?= BASE_URL ?>/package/detail/<?= $pkg['id'] ?>" class="promo-card-link mt-auto"><span data-lang="btn_more">Xem thêm</span> <i class="bi bi-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div>

@@ -228,6 +228,8 @@ const translations = {
     btn_submit_appointment: "XÁC NHẬN ĐẶT LỊCH NGAY",
     book_footer_note4: "* Lưu ý: Thời gian khám có thể thay đổi tùy theo tình trạng thực tế của bệnh viện.",
     book_hotline: "Hotline hỗ trợ: (028) 3820 6001",
+    book_lbl_doctor: "Bác sĩ chuyên khoa",
+    book_select_doctor: "-- Chọn bác sĩ --",
 
     // Packages Form
     book_pkg_title: "ĐẶT GÓI KHÁM",
@@ -546,6 +548,8 @@ const translations = {
     btn_submit_appointment: "CONFIRM APPOINTMENT NOW",
     book_footer_note4: "* Note: Examination time may change depending on the hospital's actual situation.",
     book_hotline: "Support Hotline: (028) 3820 6001",
+    book_lbl_doctor: "Specialist Doctor",
+    book_select_doctor: "-- Select doctor --",
 
     // Packages Form
     book_pkg_title: "BOOK HEALTH PACKAGE",
@@ -677,9 +681,17 @@ const translations = {
     "Tim Mạch": "Cardiology",
     "Nội Tiết": "Endocrinology",
     "Nhi Khoa": "Pediatrics",
+    "Nhi khoa": "Pediatrics",
+    "Tim mạch": "Cardiology",
+    "Ung bướu": "Oncology",
+    "Ung Bướu": "Oncology",
+    "Chấn thương chỉnh hình": "Orthopedics & Traumatology",
     "Tiêu Hoá": "Gastroenterology",
     "Nha Khoa": "Dentistry",
     "Nguyễn Văn An": "Nguyen Van An",
+    "BS. Nguyễn Văn An": "Dr. Nguyen Van An",
+    "BS. Lê Minh Tâm": "Dr. Le Minh Tam",
+    "BS. Phạm Quang Khải": "Dr. Pham Quang Khai",
     "Trần Thị Bình": "Tran Thanh Binh",
     "Trần Thanh Bình": "Tran Thanh Binh",
     "BS. Trần Thanh Bình": "Dr. Tran Thanh Binh",

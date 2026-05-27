@@ -19,10 +19,10 @@ class HospitalizationModel
     public function create(array $data)
     {
         $query = "INSERT INTO hospitalizations (
-                    patient_name, phone, cccd, patient_id, 
+                    patient_name, phone, cccd, patient_id, gender,
                     department, reason, admission_date, room_type, tong_tien, status
                   ) VALUES (
-                    :patient_name, :phone, :cccd, :patient_id, 
+                    :patient_name, :phone, :cccd, :patient_id, :gender,
                     :department, :reason, :admission_date, :room_type, :tong_tien, 'Waiting'
                   )";
                   
@@ -33,6 +33,7 @@ class HospitalizationModel
             ':phone'          => $data['phone'] ?? null,
             ':cccd'           => $data['cccd'] ?? null,
             ':patient_id'     => $data['patient_id'] ?? null,
+            ':gender'         => $data['gender'] ?? null,
             ':department'     => $data['department'] ?? null,
             ':reason'         => $data['reason'] ?? null,
             ':admission_date' => $data['admission_date'] ?? null,
@@ -67,11 +68,24 @@ class HospitalizationModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getAll(): array
+    public function getAll($search = ''): array
     {
-        $query = "SELECT * FROM hospitalizations ORDER BY admission_date DESC";
+        $query = "SELECT h.*, p.patient_code as linked_patient_code FROM hospitalizations h LEFT JOIN patients p ON h.phone = p.phone WHERE 1=1";
+        
+        $params = [];
+        if (!empty($search)) {
+            $query .= " AND (h.patient_name LIKE :search1 OR h.phone LIKE :search2 OR h.patient_id LIKE :search3 OR p.patient_code LIKE :search4)";
+            $searchTerm = '%' . $search . '%';
+            $params[':search1'] = $searchTerm;
+            $params[':search2'] = $searchTerm;
+            $params[':search3'] = $searchTerm;
+            $params[':search4'] = $searchTerm;
+        }
+
+        $query .= " ORDER BY h.admission_date DESC";
+
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

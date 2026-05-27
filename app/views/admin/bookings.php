@@ -6,16 +6,22 @@
             <h1 class="fw-bold text-primary mb-0"><i class="bi bi-calendar-check me-2"></i>Quản lý Đặt lịch</h1>
             <p class="text-muted mt-2">Danh sách bệnh nhân đã điền form đăng ký khám bệnh / gói khám</p>
         </div>
-        <div class="col-md-6 text-md-end mt-3 mt-md-0">
-            <a href="<?= BASE_URL ?>/admin/dashboard" class="btn btn-outline-secondary rounded-pill px-4">
+        <div class="col-md-6 d-flex gap-3 justify-content-md-end flex-wrap flex-md-nowrap mt-3 mt-md-0">
+            <form action="" method="GET" class="input-group shadow-sm" style="max-width: 350px;">
+                <input type="text" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="form-control rounded-pill-start border-end-0 py-2" placeholder="Tìm mã BN, tên hoặc SĐT...">
+                <button class="btn btn-outline-secondary rounded-pill-end border-start-0 py-2 px-3 bg-white" type="submit">
+                    <i class="bi bi-search text-primary"></i>
+                </button>
+            </form>
+            <a href="<?= BASE_URL ?>/admin/dashboard" class="btn btn-outline-secondary rounded-pill px-4 py-2">
                 <i class="bi bi-arrow-left me-2"></i>Quay lại Dashboard
             </a>
         </div>
     </div>
 
-    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="card border-0 shadow-sm rounded-4">
         <div class="card-body p-0">
-            <div class="table-responsive">
+            <div class="table-responsive" style="overflow: visible;">
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-primary text-primary">
                         <tr>
@@ -40,7 +46,12 @@
                             <?php foreach ($bookings as $booking): ?>
                                 <tr>
                                     <td class="px-4 fw-bold text-dark">
-                                        <?= !empty($booking['patient_code']) ? htmlspecialchars($booking['patient_code']) : '<span class="text-muted small">Khách vãng lai</span>' ?>
+                                        <?php 
+                                            $code = !empty($booking['patient_code']) ? $booking['patient_code'] : 
+                                                    (!empty($booking['ma_benh_nhan']) ? $booking['ma_benh_nhan'] : 
+                                                    (!empty($booking['linked_patient_code']) ? $booking['linked_patient_code'] : ''));
+                                            echo $code ? htmlspecialchars($code) : '<span class="text-muted small">Khách vãng lai</span>';
+                                        ?>
                                     </td>
                                     <td>
                                         <div class="fw-bold"><?= htmlspecialchars($booking['ten_benh_nhan'] ?? '') ?></div>

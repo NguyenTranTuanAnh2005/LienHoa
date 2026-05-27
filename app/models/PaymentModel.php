@@ -85,14 +85,14 @@ class PaymentModel
             $queryBookings = "SELECT d.*, g.gia_tien 
                               FROM dat_lich d 
                               LEFT JOIN goi_kham g ON d.id_goi_kham = g.id 
-                              WHERE d.ma_benh_nhan = :code";
+                              WHERE d.ma_benh_nhan = :code AND d.trang_thai != 'da_huy'";
             $stmtB = $this->conn->prepare($queryBookings);
             $stmtB->execute([':code' => $code]);
         } else {
             $queryBookings = "SELECT d.*, g.gia_tien 
                               FROM dat_lich d 
                               LEFT JOIN goi_kham g ON d.id_goi_kham = g.id 
-                              WHERE d.ma_benh_nhan = :code AND d.thanh_toan = :status";
+                              WHERE d.ma_benh_nhan = :code AND d.thanh_toan = :status AND d.trang_thai != 'da_huy'";
             $stmtB = $this->conn->prepare($queryBookings);
             $stmtB->execute([':code' => $code, ':status' => $status]);
         }
@@ -122,11 +122,11 @@ class PaymentModel
 
         // 3. Add hospitalizations
         if ($status === 'ALL') {
-            $queryHosp = "SELECT * FROM hospitalizations WHERE patient_id = :code";
+            $queryHosp = "SELECT * FROM hospitalizations WHERE patient_id = :code AND LOWER(status) != 'cancelled' AND LOWER(status) != 'rejected'";
             $stmtH = $this->conn->prepare($queryHosp);
             $stmtH->execute([':code' => $code]);
         } else {
-            $queryHosp = "SELECT * FROM hospitalizations WHERE patient_id = :code AND thanh_toan = :status";
+            $queryHosp = "SELECT * FROM hospitalizations WHERE patient_id = :code AND thanh_toan = :status AND LOWER(status) != 'cancelled' AND LOWER(status) != 'rejected'";
             $stmtH = $this->conn->prepare($queryHosp);
             $stmtH->execute([':code' => $code, ':status' => $status]);
         }
@@ -145,11 +145,11 @@ class PaymentModel
 
         // 4. Add lab tests
         if ($status === 'ALL') {
-            $queryLab = "SELECT l.* FROM lab_tests l LEFT JOIN users u ON CAST(l.user_id AS CHAR) COLLATE utf8mb4_general_ci = CAST(u.id AS CHAR) COLLATE utf8mb4_general_ci LEFT JOIN patients p ON u.patient_id = p.id WHERE (l.user_id = :code1 OR l.patient_id = :code2 OR p.patient_code = :code3)";
+            $queryLab = "SELECT l.* FROM lab_tests l LEFT JOIN users u ON CAST(l.user_id AS CHAR) COLLATE utf8mb4_general_ci = CAST(u.id AS CHAR) COLLATE utf8mb4_general_ci LEFT JOIN patients p ON u.patient_id = p.id WHERE (l.user_id = :code1 OR l.patient_id = :code2 OR p.patient_code = :code3) AND LOWER(l.status) != 'cancelled' AND LOWER(l.status) != 'rejected'";
             $stmtL = $this->conn->prepare($queryLab);
             $stmtL->execute([':code1' => $code, ':code2' => $code, ':code3' => $code]);
         } else {
-            $queryLab = "SELECT l.* FROM lab_tests l LEFT JOIN users u ON CAST(l.user_id AS CHAR) COLLATE utf8mb4_general_ci = CAST(u.id AS CHAR) COLLATE utf8mb4_general_ci LEFT JOIN patients p ON u.patient_id = p.id WHERE (l.user_id = :code1 OR l.patient_id = :code2 OR p.patient_code = :code3) AND l.thanh_toan = :status";
+            $queryLab = "SELECT l.* FROM lab_tests l LEFT JOIN users u ON CAST(l.user_id AS CHAR) COLLATE utf8mb4_general_ci = CAST(u.id AS CHAR) COLLATE utf8mb4_general_ci LEFT JOIN patients p ON u.patient_id = p.id WHERE (l.user_id = :code1 OR l.patient_id = :code2 OR p.patient_code = :code3) AND l.thanh_toan = :status AND LOWER(l.status) != 'cancelled' AND LOWER(l.status) != 'rejected'";
             $stmtL = $this->conn->prepare($queryLab);
             $stmtL->execute([':code1' => $code, ':code2' => $code, ':code3' => $code, ':status' => $status]);
         }

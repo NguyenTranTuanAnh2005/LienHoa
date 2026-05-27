@@ -47,6 +47,7 @@ class HospitalizationController extends BaseController
                 'phone'          => filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_SPECIAL_CHARS),
                 'cccd'           => filter_input(INPUT_POST, 'cccd', FILTER_SANITIZE_SPECIAL_CHARS),
                 'patient_id'     => filter_input(INPUT_POST, 'patient_id', FILTER_SANITIZE_SPECIAL_CHARS),
+                'gender'         => filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_SPECIAL_CHARS),
                 'department'     => filter_input(INPUT_POST, 'department', FILTER_SANITIZE_SPECIAL_CHARS),
                 'reason'         => filter_input(INPUT_POST, 'reason', FILTER_SANITIZE_SPECIAL_CHARS),
                 'admission_date' => filter_input(INPUT_POST, 'admission_date', FILTER_SANITIZE_SPECIAL_CHARS),

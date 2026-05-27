@@ -32,16 +32,28 @@ class BookingModel
      * CHỈ LẤY LỊCH HẸN KHÁM CHUYÊN KHOA / BÁC SĨ
      * Điều kiện: id_goi_kham trống (bằng 0 hoặc NULL)
      */
-    public function getDoctorBookings(): array
+    public function getDoctorBookings($search = ''): array
     {
-        $query = "SELECT d.*, b.ho_ten as ten_bac_si 
+        $query = "SELECT d.*, b.ho_ten as ten_bac_si, p.patient_code as linked_patient_code 
                   FROM dat_lich d 
                   LEFT JOIN bac_si b ON d.id_bac_si = b.id 
-                  WHERE d.id_goi_kham IS NULL OR d.id_goi_kham = 0
-                  ORDER BY d.ngay_tao DESC";
+                  LEFT JOIN patients p ON d.so_dien_thoai = p.phone
+                  WHERE (d.id_goi_kham IS NULL OR d.id_goi_kham = 0)";
+                  
+        $params = [];
+        if (!empty($search)) {
+            $query .= " AND (d.ten_benh_nhan LIKE :search1 OR d.so_dien_thoai LIKE :search2 OR d.ma_benh_nhan LIKE :search3 OR p.patient_code LIKE :search4)";
+            $searchTerm = '%' . $search . '%';
+            $params[':search1'] = $searchTerm;
+            $params[':search2'] = $searchTerm;
+            $params[':search3'] = $searchTerm;
+            $params[':search4'] = $searchTerm;
+        }
+
+        $query .= " ORDER BY d.ngay_tao DESC";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
     }
 
@@ -50,16 +62,28 @@ class BookingModel
      * Điều kiện: id_goi_kham có giá trị cụ thể lớn hơn 0
      * ĐÃ SỬA: Thay g.ten_goi_kham bằng g.ten_goi AS ten_goi_kham khớp với cấu trúc bảng thực tế
      */
-    public function getPackageBookings(): array
+    public function getPackageBookings($search = ''): array
     {
-        $query = "SELECT d.*, g.ten_goi AS ten_goi_kham, g.gia_tien
+        $query = "SELECT d.*, g.ten_goi AS ten_goi_kham, g.gia_tien, p.patient_code as linked_patient_code
                   FROM dat_lich d 
                   INNER JOIN goi_kham g ON d.id_goi_kham = g.id 
-                  WHERE d.id_goi_kham IS NOT NULL AND d.id_goi_kham > 0
-                  ORDER BY d.ngay_tao DESC";
+                  LEFT JOIN patients p ON d.so_dien_thoai = p.phone
+                  WHERE d.id_goi_kham IS NOT NULL AND d.id_goi_kham > 0";
+
+        $params = [];
+        if (!empty($search)) {
+            $query .= " AND (d.ten_benh_nhan LIKE :search1 OR d.so_dien_thoai LIKE :search2 OR d.ma_benh_nhan LIKE :search3 OR p.patient_code LIKE :search4)";
+            $searchTerm = '%' . $search . '%';
+            $params[':search1'] = $searchTerm;
+            $params[':search2'] = $searchTerm;
+            $params[':search3'] = $searchTerm;
+            $params[':search4'] = $searchTerm;
+        }
+
+        $query .= " ORDER BY d.ngay_tao DESC";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
     }
 

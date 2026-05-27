@@ -6,16 +6,22 @@
             <h1 class="fw-bold text-info mb-0"><i class="bi bi-flask me-2"></i>Quản lý Xét Nghiệm</h1>
             <p class="text-muted mt-2">Danh sách bệnh nhân đăng ký các dịch vụ xét nghiệm</p>
         </div>
-        <div class="col-md-6 text-md-end mt-3 mt-md-0">
-            <a href="<?= BASE_URL ?>/admin/dashboard" class="btn btn-outline-secondary rounded-pill px-4">
-                <i class="bi bi-arrow-left me-2"></i>Quay lại Dashboard
+        <div class="col-md-6 d-flex gap-3 justify-content-md-end flex-wrap flex-md-nowrap mt-3 mt-md-0">
+            <form action="" method="GET" class="input-group shadow-sm" style="max-width: 350px;">
+                <input type="text" name="search" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" class="form-control rounded-pill-start border-end-0 py-2" placeholder="Tìm mã BN, tên hoặc SĐT...">
+                <button class="btn btn-outline-secondary rounded-pill-end border-start-0 py-2 px-3 bg-white" type="submit">
+                    <i class="bi bi-search text-info"></i>
+                </button>
+            </form>
+            <a href="<?= BASE_URL ?>/admin/dashboard" class="btn btn-outline-secondary rounded-pill px-4 py-2">
+                <i class="bi bi-arrow-left me-2"></i>Quay lại
             </a>
         </div>
     </div>
 
-    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="card border-0 shadow-sm rounded-4">
         <div class="card-body p-0">
-            <div class="table-responsive">
+            <div class="table-responsive" style="overflow: visible;">
                 <table class="table table-hover align-middle mb-0">
                     <thead class="table-info text-info">
                         <tr>
@@ -39,7 +45,14 @@
                         <?php else: ?>
                             <?php foreach ($labTests as $test): ?>
                                 <tr>
-                                    <td class="px-4 fw-bold text-dark"><?= htmlspecialchars($test['user_id'] ?? 'N/A') ?></td>
+                                    <td class="px-4 fw-bold text-dark">
+                                        <?php
+                                            $code = !empty($test['patient_id']) ? $test['patient_id'] : 
+                                                    (!empty($test['user_id']) ? $test['user_id'] : 
+                                                    (!empty($test['linked_patient_code']) ? $test['linked_patient_code'] : 'N/A'));
+                                            echo htmlspecialchars($code);
+                                        ?>
+                                    </td>
                                     <td>
                                         <div class="fw-bold"><?= htmlspecialchars($test['patient_name'] ?? '') ?></div>
                                     </td>

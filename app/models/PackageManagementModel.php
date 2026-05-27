@@ -15,7 +15,7 @@ class PackageManagementModel
      */
     public function getAll($search = '')
     {
-        $query = "SELECT id, ten_goi, mo_ta, gia_tien 
+        $query = "SELECT id, ten_goi, mo_ta, gia_tien, chi_tiet 
                   FROM goi_kham 
                   WHERE 1=1";
         
@@ -38,7 +38,7 @@ class PackageManagementModel
      */
     public function getById($id)
     {
-        $query = "SELECT id, ten_goi, mo_ta, gia_tien 
+        $query = "SELECT id, ten_goi, mo_ta, gia_tien, chi_tiet 
                   FROM goi_kham 
                   WHERE id = :id 
                   LIMIT 1";
@@ -59,15 +59,16 @@ class PackageManagementModel
      */
     public function create($data)
     {
-        $query = "INSERT INTO goi_kham (ten_goi, mo_ta, gia_tien) 
-                  VALUES (:ten_goi, :mo_ta, :gia_tien)";
+        $query = "INSERT INTO goi_kham (ten_goi, mo_ta, gia_tien, chi_tiet) 
+                  VALUES (:ten_goi, :mo_ta, :gia_tien, :chi_tiet)";
         
         $stmt = $this->conn->prepare($query);
         
         $params = [
             ':ten_goi' => $data['ten_goi'] ?? '',
             ':mo_ta' => $data['mo_ta'] ?? '',
-            ':gia_tien' => $data['gia_tien'] ?? 0
+            ':gia_tien' => $data['gia_tien'] ?? 0,
+            ':chi_tiet' => $data['chi_tiet'] ?? null
         ];
 
         if ($stmt->execute($params)) {
@@ -84,7 +85,7 @@ class PackageManagementModel
         $fields = [];
         $params = [':id' => $id];
         
-        $allowedFields = ['ten_goi', 'mo_ta', 'gia_tien'];
+        $allowedFields = ['ten_goi', 'mo_ta', 'gia_tien', 'chi_tiet'];
         
         foreach ($allowedFields as $field) {
             if (isset($data[$field])) {

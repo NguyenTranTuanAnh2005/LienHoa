@@ -16,8 +16,11 @@ class PatientModel
         $params = [];
 
         if (!empty($search)) {
-            $query .= " AND (full_name LIKE :search OR phone LIKE :search)";
-            $params[':search'] = '%' . $search . '%';
+            $query .= " AND (full_name LIKE :search1 OR phone LIKE :search2 OR patient_code LIKE :search3)";
+            $searchTerm = '%' . $search . '%';
+            $params[':search1'] = $searchTerm;
+            $params[':search2'] = $searchTerm;
+            $params[':search3'] = $searchTerm;
         }
 
         $query .= " ORDER BY id DESC";

@@ -231,6 +231,14 @@
                                                 <span class="badge rounded-pill <?= $statusClass ?> px-3 py-2 fw-medium shadow-sm">
                                                     <?= $statusText ?>
                                                 </span>
+                                                <?php if ($booking['trang_thai'] === 'dang_cho'): ?>
+                                                    <?php 
+                                                        $cancelType = isset($booking['is_hospitalization']) ? 'hospitalization' : (isset($booking['is_lab_test']) ? 'lab_test' : 'booking'); 
+                                                    ?>
+                                                    <button onclick="cancelService(<?= $booking['id'] ?>, '<?= $cancelType ?>')" class="btn btn-sm btn-outline-danger ms-2 rounded-pill py-0 px-2" style="font-size: 0.75rem;" title="Hủy dịch vụ">
+                                                        <i class="bi bi-x-circle"></i> Hủy
+                                                    </button>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -438,6 +446,50 @@ function handleSendSms() {
     }, 1000);
 }
 
+function cancelService(id, type) {
+    Swal.fire({
+        title: 'Xác nhận hủy?',
+        text: "Bạn có chắc chắn muốn hủy dịch vụ này không? Hành động này không thể hoàn tác.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Đồng ý hủy',
+        cancelButtonText: 'Đóng'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch('<?= BASE_URL ?>/profile/cancelService', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: id, type: type })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire(
+                        'Đã hủy!',
+                        data.message,
+                        'success'
+                    ).then(() => {
+                        window.location.reload();
+                    });
+                } else {
+                    Swal.fire(
+                        'Lỗi!',
+                        data.error || 'Có lỗi xảy ra, vui lòng thử lại.',
+                        'error'
+                    );
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire('Lỗi!', 'Không thể kết nối đến máy chủ.', 'error');
+            });
+        }
+    });
+}
 </script>
 
 <?php require_once APP_DIR . '/views/layouts/footer.php'; ?>

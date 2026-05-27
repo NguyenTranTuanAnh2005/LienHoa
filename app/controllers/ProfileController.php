@@ -48,6 +48,10 @@ class ProfileController extends BaseController
             if ($patient) {
                 // Lấy lịch sử từ dat_lich
                 $bookings = $this->bookingModel->findByPatientCodeOrPhone($patient['patient_code'], $patient['phone']);
+                foreach ($bookings as &$b) {
+                    $b['is_booking'] = true;
+                }
+                unset($b);
                 
                 // Lấy lịch sử từ hospitalizations
                 $hospitalizations = $this->hospitalizationModel->findByPatientCode($patient['patient_code']);
@@ -63,6 +67,7 @@ class ProfileController extends BaseController
                     }
 
                     $bookings[] = [
+                        'id' => $h['id'],
                         'is_hospitalization' => true,
                         'department' => $h['department'],
                         'room_type' => $h['room_type'] ?? '',
@@ -86,6 +91,7 @@ class ProfileController extends BaseController
                     }
 
                     $bookings[] = [
+                        'id' => $l['id'],
                         'is_lab_test' => true,
                         'test_type' => $l['test_type'],
                         'ngay_hen' => $l['sample_date'],
@@ -206,5 +212,50 @@ class ProfileController extends BaseController
             }
         }
         echo json_encode(['success' => true]);
+    }
+
+    /**
+     * API Hủy dịch vụ
+     * POST /profile/cancelService
+     */
+    public function cancelService()
+    {
+        $this->requireLogin();
+        
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            echo json_encode(['success' => false, 'error' => 'Method not allowed']);
+            return;
+        }
+
+        $input = json_decode(file_get_contents('php://input'), true);
+        if (!$input) {
+            $input = $_POST;
+        }
+
+        $id = $input['id'] ?? null;
+        $type = $input['type'] ?? null;
+
+        if (!$id || !$type) {
+            echo json_encode(['success' => false, 'error' => 'Thiếu thông tin dịch vụ']);
+            return;
+        }
+
+        $success = false;
+        
+        if ($type === 'booking') {
+            $success = $this->bookingModel->updateStatus($id, 'da_huy');
+        } elseif ($type === 'hospitalization') {
+            $success = $this->hospitalizationModel->updateStatus($id, 'cancelled');
+        } elseif ($type === 'lab_test') {
+            require_once APP_DIR . '/models/LabTestModel.php';
+            $labTestModel = new LabTestModel();
+            $success = $labTestModel->updateStatus($id, 'cancelled');
+        }
+
+        if ($success) {
+            echo json_encode(['success' => true, 'message' => 'Hủy dịch vụ thành công']);
+        } else {
+            echo json_encode(['success' => false, 'error' => 'Không thể hủy dịch vụ']);
+        }
     }
 }

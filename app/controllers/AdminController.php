@@ -161,11 +161,12 @@ class AdminController extends BaseController
      */
     public function bookings()
     {
-        $bookings = $this->bookingModel->getDoctorBookings();
+        $search = isset($_GET['search']) ? trim($_GET['search']) : '';
+        $bookings = $this->bookingModel->getDoctorBookings($search);
         
         require_once APP_DIR . '/models/HospitalizationModel.php';
         $hospModel = new HospitalizationModel();
-        $hospitalizations = $hospModel->getAll();
+        $hospitalizations = $hospModel->getAll($search);
         
         foreach ($hospitalizations as $h) {
             $trang_thai = 'dang_cho';
@@ -202,7 +203,8 @@ class AdminController extends BaseController
      */
     public function package()
     {
-        $packageBookings = $this->bookingModel->getPackageBookings();
+        $search = isset($_GET['search']) ? trim($_GET['search']) : '';
+        $packageBookings = $this->bookingModel->getPackageBookings($search);
         
         // Lấy thêm dữ liệu doanh thu bổ trợ cho trang quản lý gói khám (nếu cần hiển thị Card nhỏ)
         $yearlyRevenue = $this->bookingModel->getYearlyRevenue(); 
@@ -299,9 +301,10 @@ class AdminController extends BaseController
      */
     public function labtest()
     {
+        $search = isset($_GET['search']) ? trim($_GET['search']) : '';
         require_once APP_DIR . '/models/LabTestModel.php';
         $labTestModel = new LabTestModel();
-        $labTests = $labTestModel->getAll();
+        $labTests = $labTestModel->getAll($search);
         
         require_once APP_DIR . '/views/admin/lab_test.php';
     }

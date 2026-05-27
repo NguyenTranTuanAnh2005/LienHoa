@@ -142,8 +142,14 @@
                         
                         <!-- Mô tả -->
                         <div class="col-md-12">
-                            <label class="form-label fw-semibold text-dark">Mô tả</label>
-                            <textarea class="form-control rounded-3 py-2 shadow-sm border-0" id="moTa" rows="3" placeholder="Nhập mô tả gói khám..."></textarea>
+                            <label class="form-label fw-semibold text-dark">Mô tả ngắn</label>
+                            <textarea class="form-control rounded-3 py-2 shadow-sm border-0" id="moTa" rows="2" placeholder="Nhập mô tả ngắn gói khám..."></textarea>
+                        </div>
+                        
+                        <!-- Chi tiết -->
+                        <div class="col-md-12">
+                            <label class="form-label fw-semibold text-dark">Chi tiết gói khám</label>
+                            <textarea class="form-control" id="chiTiet" rows="10"></textarea>
                         </div>
                     </div>
                 </form>
@@ -158,6 +164,8 @@
 
 <!-- Thêm thư viện SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Thêm thư viện TinyMCE -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js" referrerpolicy="origin"></script>
 
 <script>
     // Định nghĩa URL kết nối API
@@ -212,6 +220,15 @@
 
     // Khởi tạo trang
     document.addEventListener('DOMContentLoaded', () => {
+        // Khởi tạo TinyMCE
+        tinymce.init({
+            selector: '#chiTiet',
+            height: 300,
+            plugins: 'lists link image table code',
+            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image | code',
+            menubar: false
+        });
+
         packageModal = new bootstrap.Modal(document.getElementById('packageModal'));
         
         loadPackages(); // Tải danh sách gói khám
@@ -228,6 +245,9 @@
         document.getElementById('btnAddPackage').addEventListener('click', () => {
             document.getElementById('packageForm').reset();
             document.getElementById('packageId').value = '';
+            if (tinymce.get('chiTiet')) {
+                tinymce.get('chiTiet').setContent('');
+            }
             document.getElementById('packageModalTitle').innerText = 'Thêm gói khám mới';
         });
 
@@ -250,6 +270,7 @@
             const data = {
                 ten_goi: tenGoi,
                 mo_ta: document.getElementById('moTa').value.trim(),
+                chi_tiet: tinymce.get('chiTiet') ? tinymce.get('chiTiet').getContent() : '',
                 gia_tien: parseInt(giaTien, 10) || 0
             };
 
@@ -308,6 +329,9 @@
                         document.getElementById('tenGoi').value = d.ten_goi;
                         document.getElementById('giaTien').value = d.gia_tien || 0;
                         document.getElementById('moTa').value = d.mo_ta || '';
+                        if (tinymce.get('chiTiet')) {
+                            tinymce.get('chiTiet').setContent(d.chi_tiet || '');
+                        }
                         
                         document.getElementById('packageModalTitle').innerText = 'Cập nhật gói khám';
                         packageModal.show();
