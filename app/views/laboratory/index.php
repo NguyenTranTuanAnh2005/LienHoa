@@ -130,7 +130,7 @@
                                         </div>
                                         <div class="col-md-6 text-center">
                                             <h4 class="text-primary fw-bolder mb-1">BỆNH VIỆN ĐA KHOA LIÊN HOA</h4>
-                                            <p class="mb-0 small text-muted">123 Đường Sức Khỏe, Quận Y Tế, TP. HCM<br>Hotline: 1900 1515 - Email: cskh@smarthospital.vn</p>
+                                            <p class="mb-0 small text-muted">123 Đường Y Tế, Phường Bệnh Viện, Quận 1, TP.HCM<br>Hotline: 1900 8888 - Email: cskh@smarthospital.vn</p>
                                         </div>
                                         <div class="col-md-3 text-center text-md-end mt-3 mt-md-0">
                                             <div class="border p-2 d-inline-block bg-white rounded shadow-sm">

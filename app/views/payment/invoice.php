@@ -103,7 +103,7 @@
                     <div>
                         <h3 class="hospital-title mb-0">BỆNH VIỆN LIÊN HOA</h3>
                         <p class="text-muted small mb-0">Chăm sóc tận tâm, Nâng tầm sức khỏe</p>
-                        <p class="text-muted small mb-0">123 Đường Sức Khỏe, Quận Y Tế, TP. HCM</p>
+                        <p class="text-muted small mb-0">123 Đường Y Tế, Phường Bệnh Viện, Quận 1, TP.HCM</p>
                     </div>
                 </div>
                 <div class="text-center text-md-end">

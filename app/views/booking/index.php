@@ -115,7 +115,7 @@
                 <div class="bg-light-footer p-4 text-center border-top">
                     <p class="mb-2 text-muted small" data-lang="book_footer_note4">* Lưu ý: Thời gian khám có thể thay đổi tùy theo tình trạng thực tế của bệnh viện.</p>
                     <p class="mb-0 fw-bold" style="color: #0d5c75;">
-                        <i class="bi bi-telephone-fill me-2"></i><span data-lang="book_hotline">Hotline hỗ trợ: (028) 3820 6001</span>
+                        <i class="bi bi-telephone-fill me-2"></i><span data-lang="book_hotline">Hotline hỗ trợ: 1900 8888</span>
                     </p>
                 </div>
             </div> </div>

@@ -246,18 +246,6 @@
                 pointHoverRadius: 8
             },
             {
-                label: 'Dịch vụ lẻ',
-                data: Object.values(chartData.kham_le),
-                borderColor: '#3b82f6',
-                backgroundColor: 'rgba(59, 130, 246, 0.15)',
-                fill: true,
-                tension: 0.55,
-                cubicInterpolationMode: 'monotone',
-                borderWidth: 4,
-                pointRadius: 2,
-                pointHoverRadius: 8
-            },
-            {
                 label: 'Viện phí',   // 🔴 ĐƯỜNG ĐỎ
                 data: Object.values(chartData.vien_phi),
                 borderColor: '#f43f5e',

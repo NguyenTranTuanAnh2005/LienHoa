@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS goi_kham (
     ten_goi VARCHAR(255) NOT NULL,
     gia_tien DECIMAL(15,2) NOT NULL, -- Cột này ĐÃ CÓ trong bảng
     mo_ta TEXT,
-    hinh_anh VARCHAR(255) DEFAULT 'default_pkg.jpg'
+    hinh_anh VARCHAR(255) DEFAULT 'default_pkg.jpg',
+    chi_tiet TEXT
 ) ENGINE=InnoDB;
 
 -- Bảng Đặt Lịch (Đã sửa lỗi thiếu cột id_bac_si và bổ sung đầy đủ trường)
@@ -171,6 +172,7 @@ CREATE TABLE IF NOT EXISTS hospitalizations (
     cccd VARCHAR(20),
 
     patient_id VARCHAR(50),
+    gender VARCHAR(10),
 
     department VARCHAR(100) NOT NULL,
 
@@ -197,6 +199,7 @@ CREATE TABLE IF NOT EXISTS lab_tests (
     phone VARCHAR(20),
     cccd VARCHAR(20),
     patient_id VARCHAR(50),
+    gender VARCHAR(10),
     test_type VARCHAR(100) NOT NULL,
     sample_date DATE NOT NULL,
     notes TEXT,
@@ -204,7 +207,7 @@ CREATE TABLE IF NOT EXISTS lab_tests (
     status VARCHAR(50) DEFAULT 'pending',
     thanh_toan VARCHAR(50) DEFAULT 'Chưa thanh toán',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 -- ================= DỮ LIỆU MẪU (DATA) =================
 
 -- 1. Chèn Chuyên khoa

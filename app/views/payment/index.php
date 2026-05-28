@@ -232,26 +232,10 @@
                                         
                                         <div class="row g-3 mb-4">
                                             <div class="col-6">
-                                                <div class="payment-card rounded-4 p-3 text-center d-flex flex-column justify-content-center align-items-center" onclick="selectPaymentMethod('atm')">
-                                                    <input type="radio" name="payment_method" value="atm" class="d-none" id="method-atm" required>
-                                                    <i class="bi bi-bank fs-1 mb-2 text-secondary transition-colors"></i>
-                                                    <span class="fw-bold small">Thẻ ATM nội địa<br>Internet Banking</span>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-6">
                                                 <div class="payment-card rounded-4 p-3 text-center d-flex flex-column justify-content-center align-items-center" onclick="selectPaymentMethod('ewallet')">
-                                                    <input type="radio" name="payment_method" value="ewallet" class="d-none" id="method-ewallet">
+                                                    <input type="radio" name="payment_method" value="ewallet" class="d-none" id="method-ewallet" required>
                                                     <i class="bi bi-wallet2 fs-1 mb-2 text-secondary transition-colors"></i>
                                                     <span class="fw-bold small">Ví điện tử<br>(Momo, ZaloPay)</span>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-6">
-                                                <div class="payment-card rounded-4 p-3 text-center d-flex flex-column justify-content-center align-items-center" onclick="selectPaymentMethod('credit')">
-                                                    <input type="radio" name="payment_method" value="credit" class="d-none" id="method-credit">
-                                                    <i class="bi bi-credit-card-fill fs-1 mb-2 text-secondary transition-colors"></i>
-                                                    <span class="fw-bold small">Thẻ tín dụng<br>(Visa, Mastercard)</span>
                                                 </div>
                                             </div>
                                             

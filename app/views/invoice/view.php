@@ -89,7 +89,7 @@
                 </div>
                 <div class="ms-1 text-hospital-blue-light small">
                     <p class="mb-1 fw-bold">BỆNH VIỆN ĐA KHOA LIÊN HOA</p>
-                    <p class="mb-1"><i class="bi bi-geo-alt"></i> 123 Đường Điện Biên Phủ, Quận 3, TP.HCM</p>
+                    <p class="mb-1"><i class="bi bi-geo-alt"></i> 123 Đường Y Tế, Phường Bệnh Viện, Quận 1, TP.HCM</p>
                     <p class="mb-0"><i class="bi bi-globe"></i> lienhoamedical.com.vn | MST: 0101234567</p>
                 </div>
             </div>

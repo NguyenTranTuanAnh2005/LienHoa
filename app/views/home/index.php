@@ -736,6 +736,12 @@ document.addEventListener('DOMContentLoaded', function () {
             <li class="nav-item" role="presentation">
                 <button class="nav-link rounded-pill px-4 py-2 mx-3" id="ungbuou-tab" data-bs-toggle="tab" data-bs-target="#ungbuou" type="button" role="tab" data-lang="spec_ungbuou">Ung Bướu</button>
             </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-pill px-4 py-2" id="ngoai-tab" data-bs-toggle="tab" data-bs-target="#ngoai" type="button" role="tab" data-lang="spec_ngoai">Ngoại Tổng Quát</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link rounded-pill px-4 py-2 mx-3" id="nhi-tab" data-bs-toggle="tab" data-bs-target="#nhi" type="button" role="tab" data-lang="spec_nhi">Khoa Nhi</button>
+            </li>
         </ul>
 
         <!-- Tab Content -->
@@ -831,6 +837,38 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                     <div class="col-md-6 hm-text-side">
                         <div class="hm-desc" data-lang="spec_ungbuou_desc">Cung cấp các dịch vụ tầm soát, chẩn đoán sớm và phác đồ điều trị ung thư đa mô thức tiên tiến. Với sự chăm sóc tận tình, chúng tôi luôn sát cánh đem lại hy vọng cho bệnh nhân.</div>
+                        <a href="<?= BASE_URL ?>/booking" class="hm-link-btn"><i class="bi bi-chat-dots me-2"></i> <span data-lang="btn_contact">Liên hệ</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ngoại Tổng Quát -->
+            <div class="tab-pane fade" id="ngoai" role="tabpanel" tabindex="0">
+                <div class="hoan-my-card">
+                    <div class="col-md-6 hm-image-side" style="background-image: url('<?= BASE_URL ?>/assets/images/ngoai_friendly.png');">
+                        <div class="hm-gradient-overlay">
+                            <div class="hm-title" data-lang="spec_ngoai_title">Khoa Ngoại Tổng Quát</div>
+                            <div class="hm-subtitle" data-lang="spec_ngoai_subtitle">Phẫu thuật điều trị an toàn, phục hồi nhanh chóng</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 hm-text-side">
+                        <div class="hm-desc" data-lang="spec_ngoai_desc">Chuyên thực hiện các phẫu thuật từ tiểu phẫu đến đại phẫu với kỹ thuật ít xâm lấn, đảm bảo an toàn tối đa và giúp bệnh nhân phục hồi sức khỏe nhanh chóng.</div>
+                        <a href="<?= BASE_URL ?>/booking" class="hm-link-btn"><i class="bi bi-chat-dots me-2"></i> <span data-lang="btn_contact">Liên hệ</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Khoa Nhi -->
+            <div class="tab-pane fade" id="nhi" role="tabpanel" tabindex="0">
+                <div class="hoan-my-card">
+                    <div class="col-md-6 hm-image-side" style="background-image: url('<?= BASE_URL ?>/assets/images/nhi_friendly.png');">
+                        <div class="hm-gradient-overlay">
+                            <div class="hm-title" data-lang="spec_nhi_title">Khoa Nhi</div>
+                            <div class="hm-subtitle" data-lang="spec_nhi_subtitle">Chăm sóc sức khỏe toàn diện cho mầm non tương lai</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 hm-text-side">
+                        <div class="hm-desc" data-lang="spec_nhi_desc">Đội ngũ y bác sĩ nhi khoa tận tâm, yêu trẻ, chuyên chẩn đoán và điều trị các bệnh lý trẻ em với môi trường thân thiện, giúp các bé không sợ hãi khi khám bệnh.</div>
                         <a href="<?= BASE_URL ?>/booking" class="hm-link-btn"><i class="bi bi-chat-dots me-2"></i> <span data-lang="btn_contact">Liên hệ</span></a>
                     </div>
                 </div>

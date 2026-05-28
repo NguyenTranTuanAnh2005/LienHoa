@@ -227,7 +227,7 @@ const translations = {
     book_plh_notes_short: "Mô tả ngắn gọn tình trạng sức khỏe của bạn...",
     btn_submit_appointment: "XÁC NHẬN ĐẶT LỊCH NGAY",
     book_footer_note4: "* Lưu ý: Thời gian khám có thể thay đổi tùy theo tình trạng thực tế của bệnh viện.",
-    book_hotline: "Hotline hỗ trợ: (028) 3820 6001",
+    book_hotline: "Hotline hỗ trợ: 1900 8888",
     book_lbl_doctor: "Bác sĩ chuyên khoa",
     book_select_doctor: "-- Chọn bác sĩ --",
 
@@ -285,6 +285,14 @@ const translations = {
     spec_ungbuou_title: "Ung Bướu",
     spec_ungbuou_subtitle: "Đồng hành cùng bệnh nhân trong cuộc chiến chống ung thư",
     spec_ungbuou_desc: "Cung cấp các dịch vụ tầm soát, chẩn đoán sớm và phác đồ điều trị ung thư đa mô thức tiên tiến. Với sự chăm sóc tận tình, chúng tôi luôn sát cánh đem lại hy vọng cho bệnh nhân.",
+    spec_ngoai: "Ngoại Tổng Quát",
+    spec_ngoai_title: "Khoa Ngoại Tổng Quát",
+    spec_ngoai_subtitle: "Phẫu thuật điều trị an toàn, phục hồi nhanh chóng",
+    spec_ngoai_desc: "Chuyên thực hiện các phẫu thuật từ tiểu phẫu đến đại phẫu với kỹ thuật ít xâm lấn, đảm bảo an toàn tối đa và giúp bệnh nhân phục hồi sức khỏe nhanh chóng.",
+    spec_nhi: "Khoa Nhi",
+    spec_nhi_title: "Khoa Nhi",
+    spec_nhi_subtitle: "Chăm sóc sức khỏe toàn diện cho mầm non tương lai",
+    spec_nhi_desc: "Đội ngũ y bác sĩ nhi khoa tận tâm, yêu trẻ, chuyên chẩn đoán và điều trị các bệnh lý trẻ em với môi trường thân thiện, giúp các bé không sợ hãi khi khám bệnh.",
     btn_contact: "Liên hệ",
 
     // CV Section
@@ -547,7 +555,7 @@ const translations = {
     book_plh_notes_short: "Briefly describe your health condition...",
     btn_submit_appointment: "CONFIRM APPOINTMENT NOW",
     book_footer_note4: "* Note: Examination time may change depending on the hospital's actual situation.",
-    book_hotline: "Support Hotline: (028) 3820 6001",
+    book_hotline: "Support Hotline: 1900 8888",
     book_lbl_doctor: "Specialist Doctor",
     book_select_doctor: "-- Select doctor --",
 
@@ -606,6 +614,14 @@ const translations = {
     spec_ungbuou_title: "Oncology",
     spec_ungbuou_subtitle: "Accompanying patients in the fight against cancer",
     spec_ungbuou_desc: "Providing advanced multimodal cancer screening, early diagnosis, and treatment regimens. With dedicated care, we always stand side by side to bring hope to patients.",
+    spec_ngoai: "General Surgery",
+    spec_ngoai_title: "General Surgery",
+    spec_ngoai_subtitle: "Safe surgical treatment, rapid recovery",
+    spec_ngoai_desc: "Specializing in surgeries from minor to major operations with minimally invasive techniques, ensuring maximum safety and helping patients recover quickly.",
+    spec_nhi: "Pediatrics",
+    spec_nhi_title: "Pediatrics",
+    spec_nhi_subtitle: "Comprehensive healthcare for the future generation",
+    spec_nhi_desc: "A team of dedicated pediatricians who love children, specializing in diagnosing and treating pediatric diseases in a friendly environment, helping children overcome their fear of doctors.",
     btn_contact: "Contact",
 
     // CV Section

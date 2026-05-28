@@ -75,7 +75,6 @@
                     <td class="qr-box">
                         <?php $bookingCode = 'NV' . date('Y') . str_pad($hospitalization['id'] ?? 0, 4, '0', STR_PAD_LEFT); ?>
                         <small class="d-block text-muted">Mã phiếu: <strong><?= $bookingCode ?></strong></small>
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<?= urlencode($bookingCode) ?>" alt="QR">
                     </td>
                 </tr>
             </table>
