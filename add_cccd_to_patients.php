@@ -16,3 +16,5 @@ try {
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage() . "\n";
 }
+
+//Đoạn code này giúp đồng bộ hóa cấu trúc Database giữa các máy tính khác nhau.

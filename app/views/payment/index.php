@@ -1,12 +1,20 @@
 <?php require_once APP_DIR . '/views/layouts/header.php'; ?>
 
+<style>
+    .animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
 <main class="flex-grow-1 bg-light py-5">
     <div class="container">
-        <div class="text-center mb-5">
-            <h1 class="text-primary fw-bolder">
+        <div class="text-center mb-5 animate-fade-in-up">
+            <h1 class="text-primary fw-bolder" data-lang="payment_main_title">
                 Thanh Toán Viện Phí
             </h1>
-            <p class="text-muted">
+            <p class="text-muted" data-lang="payment_main_desc">
                 Nhập Mã bệnh nhân để tra cứu và thanh toán.
             </p>
         </div>
@@ -25,11 +33,11 @@
 
                 <?php if (empty($searched)): ?>
 
-                    <div class="card border-0 shadow-sm p-4 mb-4 rounded-4">
+                    <div class="card border-0 shadow-sm p-4 mb-4 rounded-4 animate-fade-in-up">
 
                         <div id="step-input-code">
 
-                            <label class="form-label fw-bold">
+                            <label class="form-label fw-bold" data-lang="patient_id_label">
                                 Mã định danh y tế bệnh nhân
                             </label>
 
@@ -113,7 +121,7 @@
 
                     <?php if (empty($data)): ?>
 
-                        <div class="alert alert-warning text-center shadow-sm border-0">
+                        <div class="alert alert-warning text-center shadow-sm border-0 animate-fade-in-up">
                             <i class="bi bi-exclamation-triangle me-2"></i>
 
                             Không tìm thấy mã
@@ -131,7 +139,7 @@
 
                     <?php else: ?>
 
-                        <div class="card shadow border-0 rounded-4 overflow-hidden">
+                        <div class="card shadow border-0 rounded-4 overflow-hidden animate-fade-in-up">
 
                             <div class="card-header bg-white border-0 pt-4 text-center">
                                 <h4 class="mb-0 fw-bold">
@@ -230,25 +238,17 @@
                                     <form action="<?= BASE_URL ?>/payment/process" method="GET">
                                         <input type="hidden" name="code" value="<?= htmlspecialchars($code ?? '') ?>">
                                         
-                                        <div class="row g-3 mb-4">
-                                            <div class="col-6">
-                                                <div class="payment-card rounded-4 p-3 text-center d-flex flex-column justify-content-center align-items-center" onclick="selectPaymentMethod('ewallet')">
-                                                    <input type="radio" name="payment_method" value="ewallet" class="d-none" id="method-ewallet" required>
+                                        <div class="row justify-content-center g-3 mb-4">
+                                            <div class="col-md-8 col-12">
+                                                <div class="payment-card rounded-4 p-3 text-center d-flex flex-column justify-content-center align-items-center active" onclick="selectPaymentMethod('ewallet')">
+                                                    <input type="radio" name="payment_method" value="ewallet" class="d-none" id="method-ewallet" checked required>
                                                     <i class="bi bi-wallet2 fs-1 mb-2 text-secondary transition-colors"></i>
-                                                    <span class="fw-bold small">Ví điện tử<br>(Momo, ZaloPay)</span>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-6">
-                                                <div class="payment-card rounded-4 p-3 text-center d-flex flex-column justify-content-center align-items-center" onclick="selectPaymentMethod('counter')">
-                                                    <input type="radio" name="payment_method" value="counter" class="d-none" id="method-counter">
-                                                    <i class="bi bi-hospital fs-1 mb-2 text-secondary transition-colors"></i>
-                                                    <span class="fw-bold small">Thanh toán tại<br>quầy bệnh viện</span>
+                                                    <span class="fw-bold small">Ví điện tử / Chuyển khoản QR<br>(Momo, ZaloPay, Mobile Banking)</span>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <button type="submit" id="btn-confirm-payment" class="btn btn-primary w-100 py-3 fw-bold shadow-sm rounded-pill" disabled>
+                                        <button type="submit" id="btn-confirm-payment" class="btn btn-primary w-100 py-3 fw-bold shadow-sm rounded-pill">
                                             <i class="bi bi-check-circle-fill me-2"></i> XÁC NHẬN PHƯƠNG THỨC
                                         </button>
                                     </form>

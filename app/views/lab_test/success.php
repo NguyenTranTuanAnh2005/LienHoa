@@ -76,8 +76,23 @@
 
             <div class="text-center my-4">
                 <h3 class="fw-bold mb-1">PHIẾU ĐĂNG KÝ XÉT NGHIỆM</h3>
-                <?php $created_at = $labTest['created_at'] ?? 'now'; ?>
-                <p class="text-muted">Ngày <?= date('d/m/Y', strtotime($created_at)) ?> | Trạng thái: <span class="text-warning fw-bold"><?= mb_strtoupper($labTest['status'] ?? 'PENDING') ?></span></p>
+                <?php 
+                    $created_at = $labTest['created_at'] ?? 'now';
+                    $status = strtolower($labTest['status'] ?? 'pending');
+                    $status_text = 'ĐANG CHỜ DUYỆT';
+                    $status_color = 'text-warning';
+                    if ($status === 'processing') {
+                        $status_text = 'ĐANG XỬ LÝ';
+                        $status_color = 'text-primary';
+                    } elseif ($status === 'completed') {
+                        $status_text = 'HOÀN THÀNH';
+                        $status_color = 'text-success';
+                    } elseif ($status === 'cancelled') {
+                        $status_text = 'ĐÃ HỦY';
+                        $status_color = 'text-danger';
+                    }
+                ?>
+                <p class="text-muted">Ngày <?= date('d/m/Y', strtotime($created_at)) ?> | Trạng thái: <span class="<?= $status_color ?> fw-bold"><?= $status_text ?></span></p>
             </div>
 
             <div class="row g-4 justify-content-center">

@@ -11,3 +11,4 @@ echo "--- Current Notices ---\n";
 print_r($notices);
 
 ?>
+//Giống SELECT * FROM trong database, đoạn code này giúp hiển thị tất cả các thông báo hiện có trong bảng notices.

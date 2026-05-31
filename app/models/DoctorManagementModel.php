@@ -36,8 +36,10 @@ class DoctorManagementModel
         $params = [];
 
         if (!empty($search)) {
-            $query .= " AND (bac_si.ho_ten LIKE :search OR chuyen_khoa.ten_khoa LIKE :search)";
-            $params[':search'] = '%' . $search . '%';
+            $query .= " AND (bac_si.ho_ten LIKE :search1 OR chuyen_khoa.ten_khoa LIKE :search2)";
+            $searchTerm = '%' . $search . '%';
+            $params[':search1'] = $searchTerm;
+            $params[':search2'] = $searchTerm;
         }
 
         $query .= " ORDER BY bac_si.ho_ten ASC";

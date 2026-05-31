@@ -48,7 +48,7 @@
                                 <div class="d-flex gap-3">
                                     <div class="mt-1" style="color: #0d6efd;"><i class="bi bi-heart-pulse-fill fs-4"></i></div>
                                     <p class="text-muted lh-lg mb-0" style="font-size: 1rem; text-align: justify;" data-lang="about_desc1">
-                                        Chúng tôi cung cấp dịch vụ chăm sóc tận tâm, chất lượng cao, chi phí hợp lý với hệ thống đa chuyên khoa. Mạng lưới liên viện trên toàn quốc sẵn sàng trao đổi kiến thức và thực hành lâm sàng cùng các chuyên gia y tế toàn cầu.
+                                        Chúng tôi tự hào mang đến dịch vụ chăm sóc sức khỏe toàn diện, chất lượng quốc tế với chi phí tối ưu. Nhờ mạng lưới liên kết bệnh viện rộng khắp cả nước, chúng tôi không ngừng kết nối và chào đón các chuyên gia y tế toàn cầu để trao đổi kiến thức, nâng cao năng lực lâm sàng và tối ưu hóa hiệu quả điều trị.
                                     </p>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                 <div class="d-flex gap-3">
                                     <div class="mt-1" style="color: #0dcaf0;"><i class="bi bi-shield-fill-check fs-4"></i></div>
                                     <p class="text-muted lh-lg mb-0" style="font-size: 1rem; text-align: justify;" data-lang="about_desc2">
-                                        Được chứng nhận bởi Hội đồng Tiêu chuẩn Chăm sóc Sức khỏe Quốc tế (ACHSI), minh chứng mạnh mẽ nhất về chất lượng chăm sóc lâm sàng, đảm bảo an toàn tuyệt đối và mang lại trải nghiệm y tế tốt nhất cho bệnh nhân.
+                                        Được định hình theo các tiêu chuẩn nghiêm ngặt của các tổ chức kiểm định y khoa quốc tế, đơn vị không ngừng nâng cao mô hình chăm sóc lâm sàng và kiểm soát rủi ro. Sự công nhận từ các tổ chức này khẳng định cam kết cao nhất của chúng tôi về an toàn người bệnh và chất lượng dịch vụ.
                                     </p>
                                 </div>
                             </div>

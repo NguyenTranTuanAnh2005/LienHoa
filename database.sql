@@ -281,15 +281,15 @@ INSERT INTO notices (title, slug, summary, content, image, category) VALUES
 ('Phòng chống bệnh Sốt xuất huyết từ Bộ Y tế', 'Thong-bao-phong-chong-benh', 'Hướng dẫn phòng chống', '<p>Khoa Cấp cứu vẫn hoạt động 24/7.</p>', 'le-30-4.jpg', 'Kiến thức'),
 ('Ưu đãi Gói khám tổng quát', 'uu-dai-goi-kham-tong-quat', 'Giảm ngay 20% cho khách hàng...', '<p>Áp dụng khi đặt lịch online.</p>', 'khuyen-mai.jpg', 'Khuyến mãi');
 
-INSERT INTO patients (patient_code, full_name, gender, birthday, phone, address, cccd, diagnosis) VALUES 
-('BN2026001', 'Nguyễn Văn A', 'Nam', '1990-05-15', '0901234567', 'TP. Hồ Chí Minh', '079123456789', 'Cao huyết áp'),
-('BN2026004', 'Trần Thị Bích', 'Nữ', '1985-03-12', '0912345678', 'Quận 1, TP.HCM', '079123456781', 'Viêm dạ dày'),
-('BN2026005', 'Lê Văn Cường', 'Nam', '1992-07-25', '0908765432', 'Quận 3, TP.HCM', '079123456782', 'Đau thắt lưng'),
-('BN2026006', 'Phạm Minh Tú', 'Nam', '2000-11-02', '0934567890', 'Quận 7, TP.HCM', '079123456783', 'Cảm cúm thông thường'),
-('BN2026007', 'Nguyễn Hoàng Lan', 'Nữ', '1978-05-18', '0987654321', 'Quận 5, TP.HCM', '079123456784', 'Tiểu đường'),
-('BN2026008', 'Đỗ Thanh Phong', 'Nam', '1995-09-30', '0965432109', 'TP. Thủ Đức', '079123456785', 'Viêm xoang'),
-('BN2026009', 'Hoàng Thị Mai', 'Nữ', '1988-12-15', '0943210987', 'Quận Bình Thạnh', '079123456786', 'Thiếu máu nhẹ'),
-('BN2026010', 'Bùi Văn Dũng', 'Nam', '1999-02-28', '0978901234', 'Quận 10, TP.HCM', '079123456787', 'Rối loạn tiền đình');
+INSERT INTO patients (patient_code, full_name, gender, birthday, phone, address, email, cccd, diagnosis) VALUES 
+('BN2026001', 'Nguyễn Văn A', 'Nam', '1990-05-15', '0901234567', 'TP. Hồ Chí Minh', 'nguyenvana1990@gmail.com', '079123456789', 'Cao huyết áp'),
+('BN2026004', 'Trần Thị Bích', 'Nữ', '1985-03-12', '0912345678', 'Quận 1, TP.HCM', NULL, '079123456781', 'Viêm dạ dày'),
+('BN2026005', 'Lê Văn Cường', 'Nam', '1992-07-25', '0908765432', 'Quận 3, TP.HCM', NULL, '079123456782', 'Đau thắt lưng'),
+('BN2026006', 'Phạm Minh Tú', 'Nam', '2000-11-02', '0934567890', 'Quận 7, TP.HCM', NULL, '079123456783', 'Cảm cúm thông thường'),
+('BN2026007', 'Nguyễn Hoàng Lan', 'Nữ', '1978-05-18', '0987654321', 'Quận 5, TP.HCM', NULL, '079123456784', 'Tiểu đường'),
+('BN2026008', 'Đỗ Thanh Phong', 'Nam', '1995-09-30', '0965432109', 'TP. Thủ Đức', NULL, '079123456785', 'Viêm xoang'),
+('BN2026009', 'Hoàng Thị Mai', 'Nữ', '1988-12-15', '0943210987', 'Quận Bình Thạnh', NULL, '079123456786', 'Thiếu máu nhẹ'),
+('BN2026010', 'Bùi Văn Dũng', 'Nam', '1999-02-28', '0978901234', 'Quận 10, TP.HCM', NULL, '079123456787', 'Rối loạn tiền đình');
 -- 6. Tài khoản Admin mẫu (Mật khẩu '123456' đã được mã hóa)
 INSERT INTO users (username, password, full_name, role) VALUES 
 ('admin', '$2y$10$4A4tT.7OFhB8FYzmLB/4PeHJ4VfzR46Ox.NRlnRuLreOubCaiAOvy', 'Quản trị viên', 'admin');

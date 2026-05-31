@@ -10,8 +10,11 @@
         .btn, .d-flex.justify-content-end { display: none !important; }
     }
     .bg-soft-primary { background-color: rgba(13, 110, 253, 0.1) !important; }
-    .animate-fade-in-up { animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     .medical-record-card {
         background: #ffffff;
         background-image: radial-gradient(#f0f4f8 1px, transparent 1px);
@@ -22,19 +25,19 @@
 <main class="flex-grow-1 bg-light py-5">
     <div class="container">
         <div class="text-center mb-5 animate-fade-in-up">
-            <h1 class="text-primary fw-bolder">Kết Quả Cận Lâm Sàng</h1>
-            <p class="text-muted">Nhập Mã Phiếu Chỉ Định để xem Tờ kết quả Xét nghiệm, Siêu âm, X-Quang.</p>
+            <h1 class="text-primary fw-bolder" data-lang="laboratory_main_title">Kết Quả Cận Lâm Sàng</h1>
+            <p class="text-muted" data-lang="laboratory_main_desc">Nhập Mã Phiếu Chỉ Định để xem Tờ kết quả Xét nghiệm, Siêu âm, X-Quang.</p>
         </div>
 
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <?php if (empty($searched)): ?>
-                <div class="card shadow-sm border-0 rounded-4 mb-4">
+                <div class="card shadow-sm border-0 rounded-4 mb-4 animate-fade-in-up">
                     <div class="card-body p-4 p-md-5">
                         <div id="alert-container"></div>
                             <div id="step-input-code">
                                 <!-- THÊM MỚI: Tiêu đề cho ô nhập mã tra cứu -->
-                                <label class="form-label fw-bold text-secondary mb-2">Mã định danh y tế bệnh nhân</label>
+                                <label class="form-label fw-bold text-secondary mb-2" data-lang="patient_id_label">Mã định danh y tế bệnh nhân</label>
                                 
                                 <div class="input-group input-group-lg mb-3">
                                     <span class="input-group-text bg-white border-end-0 text-primary">
@@ -97,7 +100,7 @@
 
                 <?php if (isset($searched) && $searched): ?>
                     <?php if (empty($data)): ?>
-                        <div class="alert alert-warning border-0 shadow-sm rounded-4 text-center py-5">
+                        <div class="alert alert-warning border-0 shadow-sm rounded-4 text-center py-5 animate-fade-in-up">
                             <i class="bi bi-shield-exclamation fs-1 text-warning mb-3 d-block"></i>
                             <h4 class="alert-heading fw-bold">Không tìm thấy mã phiếu!</h4>
                             <p class="mb-0">Phiếu kiểm tra mang mã số <strong><?= htmlspecialchars($code ?? '') ?></strong> không tồn tại trong hệ thống.</p>

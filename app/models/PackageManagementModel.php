@@ -22,8 +22,10 @@ class PackageManagementModel
         $params = [];
 
         if (!empty($search)) {
-            $query .= " AND (ten_goi LIKE :search OR mo_ta LIKE :search)";
-            $params[':search'] = '%' . $search . '%';
+            $query .= " AND (ten_goi LIKE :search1 OR mo_ta LIKE :search2)";
+            $searchTerm = '%' . $search . '%';
+            $params[':search1'] = $searchTerm;
+            $params[':search2'] = $searchTerm;
         }
 
         $query .= " ORDER BY ten_goi ASC";

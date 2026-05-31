@@ -23,8 +23,8 @@
 <main class="flex-grow-1 bg-light py-5">
     <div class="container">
         <div class="text-center mb-5 animate-fade-in-up">
-            <h1 class="text-primary fw-bolder">Hồ Sơ Sức Khỏe Điện Tử</h1>
-            <p class="text-muted">Nhập Mã y tế (PID) để tra cứu hồ sơ khám chữa bệnh bảo mật.</p>
+            <h1 class="text-primary fw-bolder" data-lang="record_main_title">Hồ Sơ Sức Khỏe Điện Tử</h1>
+            <p class="text-muted" data-lang="record_main_desc">Nhập Mã y tế (PID) để tra cứu hồ sơ khám chữa bệnh bảo mật.</p>
         </div>
 
         <div class="row justify-content-center">
@@ -36,7 +36,7 @@
                         <div class="card-body p-4 p-md-5">
                             
                             <div id="step-input-code">
-                                <label class="form-label fw-bold text-secondary mb-2">Mã định danh y tế bệnh nhân</label>
+                                <label class="form-label fw-bold text-secondary mb-2" data-lang="patient_id_label">Mã định danh y tế bệnh nhân</label>
                                 <div class="input-group input-group-lg mb-3">
                                     <span class="input-group-text bg-white border-end-0 text-primary">
                                         <i class="bi bi-person-vcard text-primary"></i>
@@ -168,7 +168,7 @@
 <div class="col-6 col-md-3 col-lg">
     <div class="card vital-card p-3 bg-white shadow-sm border-start border-warning border-4">
         <div class="text-muted small fw-bold mb-1">
-            <i class="bi bi-camera-reels-fill text-warning"></i> KẾT QUẢ NỘI SOI
+            <i class="bi bi-camera-reels-fill text-warning"></i> KẾT QUẢ SIÊU ÂM
         </div>
         <div class="fs-6 fw-bold text-danger text-truncate mt-1" title="Viêm loét dạ dày tá tràng">
             <?= htmlspecialchars($data['ket_qua_noi_soi'] ?? 'Bình thường') ?>

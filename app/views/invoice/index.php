@@ -1,22 +1,30 @@
 <?php require_once APP_DIR . '/views/layouts/header.php'; ?>
 
+<style>
+    .animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; opacity: 0; }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
 <main class="flex-grow-1 bg-light py-5">
     <div class="container">
         <div class="text-center mb-5 animate-fade-in-up">
-            <h1 class="text-primary fw-bolder">Tra Cứu Hóa Đơn Điện Tử</h1>
-            <p class="text-muted">Nhập Mã bệnh nhân để tải file PDF hóa đơn VAT.</p>
+            <h1 class="text-primary fw-bolder" data-lang="invoice_main_title">Tra Cứu Hóa Đơn Điện Tử</h1>
+            <p class="text-muted" data-lang="invoice_main_desc">Nhập Mã bệnh nhân để tải file PDF hóa đơn VAT.</p>
         </div>
 
         <div class="row justify-content-center">
             <div class="col-lg-7">
                 
                 <?php if (empty($searched)): ?>
-                    <div class="card shadow-sm border-0 rounded-4 mb-4">
+                    <div class="card shadow-sm border-0 rounded-4 mb-4 animate-fade-in-up">
                         <div class="card-body p-4 p-md-5">
                             <div id="alert-container"></div>
                             
                             <div id="step-input-code">
-                                <label class="form-label fw-bold text-secondary mb-2">Mã định danh y tế bệnh nhân</label>
+                                <label class="form-label fw-bold text-secondary mb-2" data-lang="patient_id_label">Mã định danh y tế bệnh nhân</label>
                                 <div class="input-group input-group-lg mb-3">
                                     <span class="input-group-text bg-white border-end-0 text-primary">
                                         <i class="bi bi-file-earmark-text text-primary"></i>
@@ -78,7 +86,7 @@
 
                 <?php if (isset($searched) && $searched): ?>
                     <?php if (empty($data)): ?>
-                        <div class="alert alert-warning border-0 shadow-sm rounded-4 text-center py-5">
+                        <div class="alert alert-warning border-0 shadow-sm rounded-4 text-center py-5 animate-fade-in-up">
                             <i class="bi bi-shield-exclamation fs-1 text-warning mb-3 d-block"></i>
                             <h4 class="alert-heading fw-bold">Không tìm thấy mã Hóa Đơn!</h4>
                             <p class="mb-0">Hóa đơn mang mã <strong><?= htmlspecialchars($code ?? '') ?></strong> không tồn tại.</p>

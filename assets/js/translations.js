@@ -42,8 +42,8 @@ const translations = {
     hero_title1: "Bệnh Viện",
     hero_title2: "Liên Hoa",
     about_title: "Bệnh Viện Đa khoa Liên Hoa",
-    about_desc1: "Chúng tôi cung cấp dịch vụ chăm sóc tận tâm, chất lượng cao, chi phí hợp lý với nhiều chuyên khoa và tư vấn của chúng tôi tiếp tục tại các bệnh viện liên viện trên toàn quốc, chào đón các chuyên gia y tế toàn cầu để kiến thức và lâm sàng quá.",
-    about_desc2: "Chúng tôi được chứng nhận bởi Hội đông Tiêu chuẩn Chăm sóc Sức khỏe Quốc tế (ACHSI), đây là sự minh chứng cao về chăm sóc lâm sàng, an toàn bệnh nhân và chất lượng dịch vụ cao nhất của chúng tôi.",
+    about_desc1: "Chúng tôi tự hào mang đến dịch vụ chăm sóc sức khỏe toàn diện, chất lượng quốc tế với chi phí tối ưu. Nhờ mạng lưới liên kết bệnh viện rộng khắp cả nước, chúng tôi không ngừng kết nối và chào đón các chuyên gia y tế toàn cầu để trao đổi kiến thức, nâng cao năng lực lâm sàng và tối ưu hóa hiệu quả điều trị.",
+    about_desc2: "Được định hình theo các tiêu chuẩn nghiêm ngặt của các tổ chức kiểm định y khoa quốc tế, đơn vị không ngừng nâng cao mô hình chăm sóc lâm sàng và kiểm soát rủi ro. Sự công nhận từ các tổ chức này khẳng định cam kết cao nhất của chúng tôi về an toàn người bệnh và chất lượng dịch vụ.",
     feat1_title: "Chuyên Khoa Đa Dạng",
     feat1_desc: "Hệ thống khám chữa bệnh nội & khoa liên viện với hơn 50 chuyên khoa sâu, trang thiết bị tối tân chuẩn xác.",
     feat1_link: "Xem Chuyên Khoa & Bác Sĩ",
@@ -324,7 +324,16 @@ const translations = {
     quick_menu_map: "Sơ Đồ Tổng Quan",
     quick_menu_doctors: "Đội Ngũ Bác Sĩ",
     quick_menu_specialties: "Chuyên Khoa Mũi Nhọn",
-    quick_menu_packages: "Gói Chăm Sóc Sức Khỏe"
+    quick_menu_packages: "Gói Chăm Sóc Sức Khỏe",
+    payment_main_title: "Thanh Toán Viện Phí",
+    payment_main_desc: "Nhập Mã bệnh nhân để tra cứu và thanh toán.",
+    invoice_main_title: "Tra Cứu Hóa Đơn Điện Tử",
+    invoice_main_desc: "Nhập Mã bệnh nhân để tải file PDF hóa đơn VAT.",
+    record_main_title: "Hồ Sơ Sức Khỏe Điện Tử",
+    record_main_desc: "Nhập Mã y tế (PID) để tra cứu hồ sơ khám chữa bệnh bảo mật.",
+    laboratory_main_title: "Kết Quả Cận Lâm Sàng",
+    laboratory_main_desc: "Nhập Mã Phiếu Chỉ Định để xem Tờ kết quả Xét nghiệm, Siêu âm, X-Quang.",
+    patient_id_label: "Mã định danh y tế bệnh nhân"
   },
   EN: {
     // EN
@@ -654,6 +663,15 @@ const translations = {
     quick_menu_doctors: "Medical Team",
     quick_menu_specialties: "Key Specialties",
     quick_menu_packages: "Health Packages",
+    payment_main_title: "Hospital Fees Payment",
+    payment_main_desc: "Enter patient code to lookup and pay.",
+    invoice_main_title: "Electronic Invoice Lookup",
+    invoice_main_desc: "Enter patient code to download VAT invoice PDF.",
+    record_main_title: "Electronic Health Record",
+    record_main_desc: "Enter medical ID (PID) to lookup secure medical record.",
+    laboratory_main_title: "Subclinical Results",
+    laboratory_main_desc: "Enter indication form code to view laboratory test, ultrasound, X-ray results.",
+    patient_id_label: "Patient medical identifier",
 
     // Doctors Page
     doctors_title: "Our Medical Team",
